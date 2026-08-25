@@ -1,0 +1,673 @@
+/* ================= FONT DECLARATIONS ================= */
+
+@font-face {
+    font-family: 'AlloyInk-OTF';
+    src: url('font/AlloyInk-lgdWw.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'AlloyInk';
+    src: url('font/AlloyInk-nRLyO.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AnjelikaRose';
+    src: url('font/AnjelikaRose-oRGd.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AnjelikaRose-Hollow';
+    src: url('font/AnjelikaRoseHollow-4K1p.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'AnjelikaRose-Thin';
+    src: url('font/AnjelikaRoseThin-08o9.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BadUnicorn';
+    src: url('font/BadUnicornDemoRegular-BVWx.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BlueIsland';
+    src: url('font/BlueIslandStylishCuteCursive-vnM5A.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Bomberman';
+    src: url('font/BombermanDemo-lxPEV.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Cookiemonster';
+    src: url('font/Cookiemonster-gv11.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CutiePatootie';
+    src: url('font/CutiePatootie-Rgjv.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CutiePatootie-Hollow';
+    src: url('font/CutiePatootieHollow-BpZG.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CutiePatootie-Skinny';
+    src: url('font/CutiePatootieSkinny-8zXZ.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CutiePop';
+    src: url('font/CutiePop-Yydq.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DaisyDays';
+    src: url('font/DaisyDaysPersonalUse-WyRnv.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'EstieBestie';
+    src: url('font/EstieBestieRegular-R9elW.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LittleMiracles';
+    src: url('font/LittleMiracles-d9xV7.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MoodyAdolescent-OTF';
+    src: url('font/MoodyadolescentRegular-jE00v.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MoodyAdolescent';
+    src: url('font/MoodyAdolescentRegular-z8VV1.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MotleyForces';
+    src: url('font/MotleyForcesRegular-w1rZ3.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RustyHooks';
+    src: url('font/RustyHooksRegular-nROER.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Schofield';
+    src: url('font/Schofield-d9Erg.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Schofield-Outline';
+    src: url('font/SchofieldOutline-w1XoP.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Winnie-E451e';
+    src: url('font/WinniePersonalUse-E451e.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Winnie-OG5dP';
+    src: url('font/WinniePersonalUse-OG5dP.otf') format('opentype');
+}
+
+
+
+
+
+/* ===========
+      RESET & KHÓA CUỘN
+=============*/
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(250, 233, 246);
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 0;
+}
+
+
+
+
+
+
+/* ===========
+      HOME
+=============*/
+.home {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 97px 0;
+    transform: translateY(10px);
+    position: relative;
+    z-index: 2;
+
+}
+
+.homeBox {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width: min(90vw, 850px);
+    height: min(65vh, 550px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 6px rgb(242, 204, 211);
+}
+
+.window-bar {
+    background-color: rgb(34, 9, 34);
+    border: 3px solid rgb(34, 9, 34);
+    padding: 0 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(26px, 2.5vw, 27px);
+    color: rgb(236, 232, 235);
+    height: 59px;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.bar-title {
+    font-family: 'Winnie-OG5dP';
+    font-size: clamp(26px, 2.5vw, 27px);
+    color: rgb(236, 232, 235);
+    user-select: none;
+}
+
+
+.window-content {
+    padding: 24px 16px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    flex: 1;
+    overflow-y: auto;
+    border: 2px solid rgb(152, 150, 150);
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.intro-title {
+    font-family: 'AnjelikaRose';
+    font-size: clamp(4.7rem, 5.5vh, 4.5rem);
+    text-align: center;
+    padding-top: 40px;
+    margin: 0;
+    user-select: none;
+    letter-spacing: 3px;
+}
+
+.intro-h2 {
+    font-family: 'Wix Madefor Display';
+    font-size: clamp(1.5rem, 2vh, 1.5rem);
+    text-align: center;
+    font-weight: lighter;
+    margin: 0;
+    margin-top: -46px;
+    user-select: none;
+    color: rgb(61, 60, 60);
+}
+
+
+
+
+
+
+/* buttun */
+
+.exploreBtn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+
+.butifuBtn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+.btn-img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    transition: filter 0.25s ease;
+}
+
+.btn-text {
+    display: inline-block;
+    font-family: 'RustyHooks';
+    font-size: 16px;
+    color: rgb(89, 75, 89);
+    user-select: none;
+    transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.butifuBtn:hover {
+    transform: translateY(-8px) scale(1.08);
+}
+
+.butifuBtn:hover .btn-img {
+    filter: drop-shadow(0 8px 14px rgba(214, 43, 226, 0.45));
+}
+
+.butifuBtn:hover .btn-text {
+    color: rgb(214, 43, 226);
+    text-shadow: 0 2px 8px rgba(214, 43, 226, 0.3);
+}
+
+.butifuBtn:active {
+    transform: translateY(2px) scale(0.96);
+}
+
+
+
+
+
+
+
+
+
+/* ===========
+      FOOTER
+=============*/
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 2px;
+    z-index: 10;
+    text-align: center;
+    font-size: clamp(10px, 2vh, 18px);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.mediu {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.mediu a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fa-brands {
+    font-size: clamp(30px, 4.5vw, 30px);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+    will-change: transform;
+}
+
+.fa-brands.fa-facebook:hover {
+    color: #1877f2;
+    transform: scale(0.88);
+}
+
+.fa-brands.fa-x-twitter:hover {
+    color: #555;
+    transform: scale(0.88);
+}
+
+.fa-brands.fa-youtube:hover {
+    color: #ff0000;
+    transform: scale(0.92);
+}
+
+.copyright {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: clamp(20px, 2vh, 20px);
+}
+
+.copyright .symbol {
+    font-size: 1em;
+    line-height: 1;
+}
+
+.copyright .text {
+    font-family: 'LittleMiracles';
+    line-height: 1;
+}
+
+
+
+
+
+
+
+
+
+/* ================= ABOUT ================= */
+
+.aboutBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(249, 245, 248);
+    border-radius: 8px;
+    width: min(90vw, 760px);
+    height: 68vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    box-shadow: 6px 8px 0px rgba(34, 9, 34, 0.25);
+    border: 2px solid rgb(34, 9, 34);
+    z-index: 999;
+    will-change: transform;
+}
+
+.drag-handle {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    font-family: 'Wix Madefor Display', sans-serif;
+    color: #333;
+    overflow: hidden;
+    flex: 1;
+}
+
+
+
+
+/* ================= CUSTOM SCROLLBAR ================= */
+.about-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.about-content::-webkit-scrollbar-track {
+    background: rgba(240, 230, 238, 0.5);
+    border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb {
+    background: rgb(214, 43, 226);
+    border-radius: 4px;
+}
+
+.about-content::-webkit-scrollbar-thumb:hover {
+    background: rgb(160, 20, 175);
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.about-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid rgb(214, 43, 226);
+    object-fit: cover;
+}
+
+.about-name {
+    font-family: 'CutiePop', cursive;
+    font-size: 3.4rem;
+    margin: 0;
+    color: rgb(214, 43, 226);
+}
+
+.about-sub {
+    margin: 1.7px 0 0 0;
+    font-size: 1.6rem;
+    color: #666;
+}
+
+.about-divider {
+    width: 100%;
+    border: none;
+    border-top: 1.5px dashed rgb(180, 170, 180);
+    margin: 12px 0;
+    flex-shrink: 0;
+}
+
+.about-text {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+    user-select: text;
+    -webkit-overflow-scrolling: touch;
+}
+
+.about-text p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.about-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.about-text::-webkit-scrollbar-track {
+    background: rgba(240, 230, 238, 0.5);
+    border-radius: 4px;
+}
+
+.about-text::-webkit-scrollbar-thumb {
+    background: rgb(214, 43, 226);
+    border-radius: 4px;
+}
+
+.about-text::-webkit-scrollbar-thumb:hover {
+    background: rgb(160, 20, 175);
+}
+
+
+
+
+/* đóng */
+#closeAboutBtn,
+.bar-close {
+    font-family: 'Wix Madefor Display', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: light;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#closeAboutBtn,
+.bar-close {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+#closeAboutBtn:hover,
+.bar-close:hover {
+    color: #ff3366;
+    transform: translateY(-2px) scale(1.2);
+}
+
+#closeAboutBtn:active,
+.bar-close:active {
+    color: #ff3366;
+    transform: translateY(2px) scale(1);
+}
+
+
+
+
+/* ================= NIGHT MODE ================= */
+.nightMode {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.Night {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgb(34, 9, 34);
+    background-color: #fff;
+    color: rgb(34, 9, 34);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.Night:hover {
+    transform: scale(1.15) rotate(15deg);
+}
+
+.Night:active {
+    transform: scale(0.95);
+}
+
+
+/* ================= BẢNG MÀU DARK MODE ================= */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #1e1b24;
+}
+
+body.dark-mode .homeBox,
+body.dark-mode .aboutBox {
+    background-color: #2b2636;
+    box-shadow: 0px 6px #4a284e;
+    border: 2px solid #ffffff;
+}
+
+body.dark-mode .window-content {
+    border-color: #ffffff;
+}
+
+body.dark-mode .window-bar {
+    border-color: #ffffff;
+}
+
+body.dark-mode .intro-title,
+body.dark-mode .intro-h2,
+body.dark-mode .btn-text,
+body.dark-mode footer,
+body.dark-mode .mediu a,
+body.dark-mode .about-content {
+    color: #f1eef8;
+}
+
+body.dark-mode .Night {
+    background-color: #3b334a;
+    border-color: #f1eef8;
+    color: #ffd166;
+}
+
+/* ================= ABOUT  DARK MODE ================= */
+
+body.dark-mode .about-avatar {
+    border-color: #d946ef;
+    box-shadow: 0 0 10px rgba(217, 70, 239, 0.4);
+}
+
+body.dark-mode .about-name {
+    color: #f472b6;
+}
+
+body.dark-mode .about-sub {
+    color: #cbd5e1;
+}
+
+body.dark-mode .about-divider {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .about-text p {
+    color: #f1f5f9;
+}
+
+body.dark-mode .about-text::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .about-text::-webkit-scrollbar-thumb {
+    background: #d946ef;
+}
+
+body.dark-mode .about-text::-webkit-scrollbar-thumb:hover {
+    background: #c026d3;
+}
