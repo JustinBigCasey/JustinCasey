@@ -884,39 +884,56 @@ body.dark-mode .about-text::-webkit-scrollbar-thumb:hover {
     z-index: 3;
 }
 
-/*  Dải lặp:  */
+/* Dải lặp: */
 .pattern-loop {
     display: flex;
     align-items: center;
     gap: 65px;
     padding-right: 65px;
     flex-shrink: 0;
+    -webkit-animation: scrollRightToLeft 20s linear infinite;
     animation: scrollRightToLeft 20s linear infinite;
 }
 
-/*  Phóng to kích thước hình ảnh*/
+/* Phóng to kích thước hình ảnh */
 .pattern-loop img {
     width: 200px;
     height: 200px;
     object-fit: contain;
+    -webkit-transition: -webkit-transform 0.2s ease;
     transition: transform 0.2s ease;
 }
 
 .pattern-loop img:nth-child(even) {
+    -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
 }
 
 .pattern-loop img:nth-child(odd) {
+    -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);
 }
 
-
-@keyframes scrollRightToLeft {
+@-webkit-keyframes scrollRightToLeft {
     0% {
+        -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
     }
 
     100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+@keyframes scrollRightToLeft {
+    0% {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+
+    100% {
+        -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
 }
@@ -946,42 +963,73 @@ body.dark-mode .about-text::-webkit-scrollbar-thumb:hover {
     width: 100%;
     flex: 1;
     background: linear-gradient(180deg, rgba(175, 222, 238, 0.65) 0%, rgba(108, 173, 253, 0.85) 50%, rgba(208, 231, 252, 0.967) 100%);
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
+}
+
+/* Kích hoạt phần cứng GPU và khử răng cưa trên mobile */
+.wave-layer-1,
+.wave-layer-2,
+.wave-layer-3,
+.wave-layer-4 {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 /* Màu sắc từng lớp sóng pastel chuyển đổi êm đềm */
 .wave-layer-1 {
     fill: rgba(173, 245, 250, 0.45);
+    -webkit-animation: move-wave-seamless 24s linear infinite;
     animation: move-wave-seamless 24s linear infinite;
 }
 
 .wave-layer-2 {
     fill: rgba(171, 241, 252, 0.3);
+    -webkit-animation: move-wave-seamless 18s linear infinite -3s;
     animation: move-wave-seamless 18s linear infinite -3s;
 }
 
 .wave-layer-3 {
     fill: rgba(208, 250, 254, 0.5);
+    -webkit-animation: move-wave-seamless 14s linear infinite -6s;
     animation: move-wave-seamless 14s linear infinite -6s;
 }
 
 .wave-layer-4 {
     fill: rgba(175, 222, 238, 0.65);
+    -webkit-animation: move-wave-seamless 9s linear infinite -4s;
     animation: move-wave-seamless 9s linear infinite -4s;
 }
 
-/* 
-  Chạy trôi một chiều đúng bằng chu kỳ bước sóng 
-*/
-@keyframes move-wave-seamless {
+/* Keyframes chạy trôi sóng mượt mà */
+@-webkit-keyframes move-wave-seamless {
     0% {
+        -webkit-transform: translate3d(-90px, 0, 0);
         transform: translate3d(-90px, 0, 0);
     }
 
     100% {
+        -webkit-transform: translate3d(85px, 0, 0);
         transform: translate3d(85px, 0, 0);
     }
 }
+
+@keyframes move-wave-seamless {
+    0% {
+        -webkit-transform: translate3d(-90px, 0, 0);
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        -webkit-transform: translate3d(85px, 0, 0);
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
 
 /* ================= DARK MODE GRADIENT ================= */
 body.dark-mode {
