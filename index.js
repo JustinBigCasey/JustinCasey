@@ -1,9 +1,10 @@
+
+// ====== ABOUT ======
 const openBtn = document.getElementById('openAboutBtn');
 const closeBtn = document.getElementById('closeAboutBtn');
 const aboutWin = document.getElementById('aboutWindow');
 const handle = aboutWin.querySelector('.drag-handle');
 
-// Quản lý tọa độ theo translate3d
 let currentX = 0;
 let currentY = 0;
 let startX = 0;
@@ -13,28 +14,35 @@ let initialY = 0;
 let isDragging = false;
 let animationFrameId = null;
 
-// Hàm canh giữa màn hình lần đầu mở
-function centerWindow() {
-    const winWidth = aboutWin.offsetWidth;
-    const winHeight = aboutWin.offsetHeight;
-
-    currentX = Math.round((window.innerWidth - winWidth) / 2);
-    currentY = Math.round((window.innerHeight - winHeight) / 2);
-
-    aboutWin.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+// Hàm cập nhật vị trí lên CSS Variables
+function setWindowPos(x, y) {
+    currentX = x;
+    currentY = y;
+    aboutWin.style.setProperty('--x', `${x}px`);
+    aboutWin.style.setProperty('--y', `${y}px`);
 }
 
-// 1. Mở / Đóng
+// Canh giữa màn hình
+function centerWindow() {
+    const winWidth = aboutWin.offsetWidth || Math.min(window.innerWidth * 0.9, 760);
+    const winHeight = aboutWin.offsetHeight || window.innerHeight * 0.68;
+    const x = Math.round((window.innerWidth - winWidth) / 2);
+    const y = Math.round((window.innerHeight - winHeight) / 2);
+    setWindowPos(x, y);
+}
+
+// 1. Mở Cửa Sổ (Phóng to bung nở)
 openBtn.addEventListener('click', () => {
-    aboutWin.style.display = 'flex';
     centerWindow();
+    aboutWin.classList.add('is-visible');
 });
 
+// 2. Đóng Cửa Sổ (Thu nhỏ biến mất)
 closeBtn.addEventListener('click', () => {
-    aboutWin.style.display = 'none';
+    aboutWin.classList.remove('is-visible');
 });
 
-// 2. Logic Kéo Thả 60/120 FPS
+// 3. Xử lý Kéo Thả
 function getPointerPos(e) {
     if (e.touches && e.touches.length > 0) {
         return { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -46,8 +54,9 @@ function startDrag(e) {
     if (e.target.id === 'closeAboutBtn') return;
 
     isDragging = true;
-    const pos = getPointerPos(e);
+    aboutWin.classList.add('is-dragging'); // Tắt transition để kéo dính tay
 
+    const pos = getPointerPos(e);
     startX = pos.x;
     startY = pos.y;
     initialX = currentX;
@@ -60,16 +69,12 @@ function onDrag(e) {
     if (!isDragging) return;
 
     const pos = getPointerPos(e);
-    const deltaX = pos.x - startX;
-    const deltaY = pos.y - startY;
+    const newX = initialX + (pos.x - startX);
+    const newY = initialY + (pos.y - startY);
 
-    currentX = initialX + deltaX;
-    currentY = initialY + deltaY;
-
-    // Đồng bộ với chu kỳ render màn hình bằng requestAnimationFrame
     if (!animationFrameId) {
         animationFrameId = requestAnimationFrame(() => {
-            aboutWin.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+            setWindowPos(newX, newY);
             animationFrameId = null;
         });
     }
@@ -78,19 +83,21 @@ function onDrag(e) {
 }
 
 function stopDrag() {
+    if (!isDragging) return;
     isDragging = false;
+    aboutWin.classList.remove('is-dragging');
+
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
         animationFrameId = null;
     }
 }
 
-// Sự kiện chuột máy tính
+// Gắn sự kiện chuột & cảm ứng
 handle.addEventListener('mousedown', startDrag);
 window.addEventListener('mousemove', onDrag, { passive: false });
 window.addEventListener('mouseup', stopDrag);
 
-// Sự kiện cảm ứng điện thoại
 handle.addEventListener('touchstart', startDrag, { passive: false });
 window.addEventListener('touchmove', onDrag, { passive: false });
 window.addEventListener('touchend', stopDrag);
@@ -111,7 +118,7 @@ if (localStorage.getItem('theme') === 'dark') {
 nightBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 
-    // Đổi icon giữa Mặt trăng và Mặt trời
+    // Đổi icon giữa Mặt trăng và Mặt trời 
     if (document.body.classList.contains('dark-mode')) {
         nightIcon.classList.replace('fa-moon', 'fa-sun');
         localStorage.setItem('theme', 'dark');
@@ -119,4 +126,4 @@ nightBtn.addEventListener('click', () => {
         nightIcon.classList.replace('fa-sun', 'fa-moon');
         localStorage.setItem('theme', 'light');
     }
-});
+}); 
