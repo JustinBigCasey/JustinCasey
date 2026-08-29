@@ -148,6 +148,7 @@
 
     <!-- Cửa sổ About Me -->
     <div class="aboutBox" id="aboutWindow">
+
         <div class="window-bar drag-handle">
             <span class="bar-title">about me</span>
             <span class="bar-close" id="closeAboutBtn">[x]</span>
@@ -222,8 +223,173 @@
         </div>
     </div>
 
-    <!-- Các cửa sổ khác (Dự phòng mở rộng) -->
-    <div class="workBox" id="workWindow"></div>
+    <!-- ================= WORK WINDOW ================= -->
+    <div class="aboutBox workBox" id="workWindow">
+        <!-- Thanh tiêu đề -->
+        <div class="window-bar drag-handle">
+            <span class="bar-title">works</span>
+            <span class="bar-close" id="closeWorkBtn">[x]</span>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="window-content work-content">
+
+            <div class="work-text">
+
+                <div class="skills-wrapper">
+
+                    <!-- TOOLS -->
+                    <div class="skill-category">
+                        <h4 class="skill-group-title">TOOLS</h4>
+                        <div class="tag-cloud">
+                            <span class="skill-tag">PyCharm</span>
+                            <span class="skill-tag">Visual Studio Code</span>
+                            <span class="skill-tag">Visual Studio</span>
+                            <span class="skill-tag">Unity 2D/3D</span>
+                            <span class="skill-tag">Krita</span>
+                            <span class="skill-tag">Adobe Premiere</span>
+                            <span class="skill-tag">Audacity</span>
+                            <span class="skill-tag">Camtasia 9</span>
+                            <span class="skill-tag">Blender</span>
+
+                        </div>
+                    </div>
+
+                    <!-- DEVELOPMENT -->
+                    <div class="skill-category">
+                        <h4 class="skill-group-title">DEVELOPMENT</h4>
+                        <div class="tag-cloud">
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="about-divider">
+
+                <!-- illustration -->
+                <div class="project-section">
+
+                    <h4 class="skill-group-title">ILLUSTRATION</h4>
+
+                    <div class="gallery-grid">
+                        <!-- Ảnh 1 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 1" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+
+                        <!-- Ảnh 2 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 2" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+
+                        <!-- Ảnh 3 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 3" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+
+                        <!-- Ảnh 4 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 4" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+
+                        <!-- Ảnh 5 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 5" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+
+                        <!-- Ảnh 6 -->
+                        <div class="gallery-item">
+                            <img src="image/icoc.png" alt="Artwork 6" class="gallery-img"
+                                data-caption="fortnite balls all in your face fortnite balls">
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr class="about-divider">
+
+                <!-- project pro -->
+                <div class="project-section">
+
+                    <h4 class="skill-group-title">FEATURED PROJECT</h4>
+
+                    <div class="project-card">
+                        <img src="image/LOSA.png" alt="Choose Color Pixel" class="project-img">
+
+                        <div class="project-info">
+                            <h3 class="project-title">Choose Color Pixel</h3>
+
+                            <p class="project-desc">
+                                a lightweight and intuitive pixel color picker tool! just click on any pixel to
+                                instantly inspect its exact (X, Y) coordinates and RGB color values in real-time.
+                            </p>
+
+                            <p class="project-desc">
+                                all programming and UI built by me! free and available to try directly on
+                                <a href="https://itch.io/" target="_blank" rel="noopener noreferrer"
+                                    class="link">itch.io</a>.
+                            </p>
+
+                            <p class="project-desc">
+                                check out the project and give it a try <a
+                                    href="https://justincasey.itch.io/choose-color-pixel" target="_blank"
+                                    rel="noopener noreferrer" class="link">here</a>!
+                            </p>
+
+                            <!-- Nút mở trên Itch.io -->
+                            <div class="project-btn-wrap">
+                                <a href="https://justincasey.itch.io/choose-color-pixel" target="_blank"
+                                    rel="noopener noreferrer" class="project-btn">
+                                    download pages
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr class="about-divider">
+
+                <!-- other project -->
+
+                <div class="other-work-section">
+                    <h4 class="skill-group-title">OTHER DEV PROJECTS</h4>
+
+                    <ul class="about-skills-list">
+                        <li>this website!</li>
+                        <li>that's it for now, there are some more projects i'm working on in the background that i'll
+                            release soon :)</li>
+                    </ul>
+
+                    <p class="other-work-more">
+                        see more on <a href="https://github.com/JustinBigCasey" target="_blank"
+                            rel="noopener noreferrer" class="link">GitHub</a> ↗
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Khung phóng to -->
+    <div class="lightbox-modal" id="imageLightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Enlarged Artwork" class="lightbox-img" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
     <div class="linksBox" id="linksWindow"></div>
     <div class="faqBox" id="faqWindow"></div>
     <div class="contactBox" id="contactWindow"></div>

@@ -1,144 +1,231 @@
-// ====== ABOUT WINDOW ======
-const openBtn = document.getElementById('openAboutBtn');
-const closeBtn = document.getElementById('closeAboutBtn');
-const aboutWin = document.getElementById('aboutWindow');
-const handle = aboutWin ? aboutWin.querySelector('.drag-handle') : null;
+// ================= HÀM DÙNG CHUNG =================
+let highestZIndex = 1000;
 
-let currentX = 0;
-let currentY = 0;
-let startX = 0;
-let startY = 0;
-let initialX = 0;
-let initialY = 0;
-let isDragging = false;
-let animationFrameId = null;
-let hasCentered = false;
+function setupDraggableWindow(winId, openBtnId, closeBtnId) {
+    const win = document.getElementById(winId);
+    const openBtn = document.getElementById(openBtnId);
+    const closeBtn = document.getElementById(closeBtnId);
+    if (!win) return;
 
-// Hàm cập nhật vị trí lên CSS Variables
-function setWindowPos(x, y) {
-    if (!aboutWin) return;
-    currentX = x;
-    currentY = y;
-    aboutWin.style.setProperty('--x', `${x}px`);
-    aboutWin.style.setProperty('--y', `${y}px`);
-}
+    const handle = win.querySelector('.drag-handle');
+    let currentX = 0;
+    let currentY = 0;
+    let startX = 0;
+    let startY = 0;
+    let initialX = 0;
+    let initialY = 0;
+    let isDragging = false;
+    let animationFrameId = null;
+    let hasCentered = false;
 
-// Canh giữa màn hình
-function centerWindow() {
-    if (!aboutWin) return;
-    const winWidth = Math.min(window.innerWidth * 0.9, 860);
-    const winHeight = window.innerHeight * 0.7;
-    const x = Math.round((window.innerWidth - winWidth) / 2);
-    const y = Math.round((window.innerHeight - winHeight) / 2);
-    setWindowPos(x, y);
-}
-
-// Hàm mở cửa sổ
-function openWindow() {
-    if (!aboutWin) return;
-    if (!hasCentered) {
-        centerWindow();
-        hasCentered = true;
+    // Đưa cửa sổ lên trên cùng khi người dùng click vào
+    function bringToFront() {
+        highestZIndex++;
+        win.style.zIndex = highestZIndex;
     }
-    aboutWin.classList.remove('is-closing');
-    aboutWin.classList.add('is-visible', 'is-opening');
 
-    setTimeout(() => {
-        aboutWin.classList.remove('is-opening');
-    }, 350);
-}
-
-// Hàm đóng cửa sổ
-function closeWindow() {
-    if (!aboutWin) return;
-    if (!aboutWin.classList.contains('is-visible') || aboutWin.classList.contains('is-closing')) return;
-
-    aboutWin.classList.remove('is-opening');
-    aboutWin.classList.add('is-closing');
-
-    setTimeout(() => {
-        aboutWin.classList.remove('is-visible', 'is-closing');
-    }, 280);
-}
-
-// Gắn sự kiện Mở & Đóng
-if (openBtn) openBtn.addEventListener('click', openWindow);
-if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        closeWindow();
-    });
-}
-
-// Đóng bằng phím ESC
-window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' || e.key === 'Esc') {
-        closeWindow();
+    function setWindowPos(x, y) {
+        currentX = x;
+        currentY = y;
+        win.style.setProperty('--x', `${x}px`);
+        win.style.setProperty('--y', `${y}px`);
     }
-});
 
-// Xử lý Kéo Thả Cửa Sổ
-function getPointerPos(e) {
-    if (e.touches && e.touches.length > 0) {
-        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    function centerWindow() {
+        const winWidth = Math.min(window.innerWidth * 0.9, 860);
+        const winHeight = window.innerHeight * 0.7;
+        const x = Math.round((window.innerWidth - winWidth) / 2);
+        const y = Math.round((window.innerHeight - winHeight) / 2);
+        setWindowPos(x, y);
     }
-    return { x: e.clientX, y: e.clientY };
-}
 
-function startDrag(e) {
-    if (!aboutWin) return;
-    if (e.target.id === 'closeAboutBtn' || e.target.closest('#closeAboutBtn')) return;
+    function openWindow() {
+        bringToFront();
+        if (!hasCentered) {
+            centerWindow();
+            hasCentered = true;
+        }
+        win.classList.remove('is-closing');
+        win.classList.add('is-visible', 'is-opening');
 
-    isDragging = true;
-    aboutWin.classList.remove('is-opening');
-    aboutWin.classList.add('is-dragging');
+        setTimeout(() => {
+            win.classList.remove('is-opening');
+        }, 350);
+    }
 
-    const pos = getPointerPos(e);
-    startX = pos.x;
-    startY = pos.y;
-    initialX = currentX;
-    initialY = currentY;
+    function closeWindow() {
+        if (!win.classList.contains('is-visible') || win.classList.contains('is-closing')) return;
 
-    if (e.cancelable) e.preventDefault();
-}
+        win.classList.remove('is-opening');
+        win.classList.add('is-closing');
 
-function onDrag(e) {
-    if (!isDragging) return;
+        setTimeout(() => {
+            win.classList.remove('is-visible', 'is-closing');
+        }, 280);
+    }
 
-    const pos = getPointerPos(e);
-    const newX = initialX + (pos.x - startX);
-    const newY = initialY + (pos.y - startY);
-
-    if (!animationFrameId) {
-        animationFrameId = requestAnimationFrame(() => {
-            setWindowPos(newX, newY);
-            animationFrameId = null;
+    // Sự kiện mở & đóng
+    if (openBtn) openBtn.addEventListener('click', openWindow);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeWindow();
         });
     }
 
-    if (e.cancelable) e.preventDefault();
-}
+    win.addEventListener('mousedown', bringToFront);
+    win.addEventListener('touchstart', bringToFront, { passive: true });
 
-function stopDrag() {
-    if (!isDragging || !aboutWin) return;
-    isDragging = false;
-    aboutWin.classList.remove('is-dragging');
+    // Đóng bằng phím ESC
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            closeWindow();
+        }
+    });
 
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
+    // Kéo thả cửa sổ
+    function getPointerPos(e) {
+        if (e.touches && e.touches.length > 0) {
+            return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+        return { x: e.clientX, y: e.clientY };
+    }
+
+    function startDrag(e) {
+        if (e.target.classList.contains('bar-close') || e.target.closest('.bar-close')) return;
+
+        isDragging = true;
+        bringToFront();
+        win.classList.remove('is-opening');
+        win.classList.add('is-dragging');
+
+        const pos = getPointerPos(e);
+        startX = pos.x;
+        startY = pos.y;
+        initialX = currentX;
+        initialY = currentY;
+
+        if (e.cancelable) e.preventDefault();
+    }
+
+    function onDrag(e) {
+        if (!isDragging) return;
+
+        const pos = getPointerPos(e);
+        const newX = initialX + (pos.x - startX);
+        const newY = initialY + (pos.y - startY);
+
+        if (!animationFrameId) {
+            animationFrameId = requestAnimationFrame(() => {
+                setWindowPos(newX, newY);
+                animationFrameId = null;
+            });
+        }
+
+        if (e.cancelable) e.preventDefault();
+    }
+
+    function stopDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        win.classList.remove('is-dragging');
+
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+
+    if (handle) {
+        handle.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', onDrag, { passive: false });
+        window.addEventListener('mouseup', stopDrag);
+
+        handle.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', onDrag, { passive: false });
+        window.addEventListener('touchend', stopDrag);
     }
 }
 
-if (handle) {
-    handle.addEventListener('mousedown', startDrag);
-    window.addEventListener('mousemove', onDrag, { passive: false });
-    window.addEventListener('mouseup', stopDrag);
+// KHỞI TẠO CÁC CỬA SỔ 
+setupDraggableWindow('aboutWindow', 'openAboutBtn', 'closeAboutBtn');
+setupDraggableWindow('workWindow', 'openWorkBtn', 'closeWorkBtn');
+setupDraggableWindow('linksWindow', 'openLinksBtn', 'closeLinksBtn');
+setupDraggableWindow('faqWindow', 'openFaqBtn', 'closeFaqBtn');
+setupDraggableWindow('contactWindow', 'openContactBtn', 'closeContactBtn');
 
-    handle.addEventListener('touchstart', startDrag, { passive: false });
-    window.addEventListener('touchmove', onDrag, { passive: false });
-    window.addEventListener('touchend', stopDrag);
+
+
+
+
+// ================= LIGHTBOX IMAGE PREVIEW =================
+const lightbox = document.getElementById('imageLightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCaption = document.getElementById('lightboxCaption');
+const lightboxClose = document.getElementById('lightboxClose');
+
+// Mở phóng to ảnh
+function openLightbox(src, captionHtml) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxCaption.innerHTML = captionHtml || '';
+
+    lightbox.style.display = 'flex';
+    // Đợi 1 chút để chạy animation mượt mà
+    setTimeout(() => {
+        lightbox.classList.add('is-active');
+    }, 10);
 }
+
+// Đóng phóng to ảnh
+function closeLightbox() {
+    if (!lightbox || !lightbox.classList.contains('is-active')) return;
+    lightbox.classList.remove('is-active');
+    setTimeout(() => {
+        lightbox.style.display = 'none';
+        if (lightboxImg) lightboxImg.src = '';
+        if (lightboxCaption) lightboxCaption.innerHTML = '';
+    }, 250);
+}
+
+// 1. Click vào bất kỳ ảnh nào trong thư viện tranh để mở
+document.addEventListener('click', (e) => {
+    const clickedImg = e.target.closest('.gallery-img');
+    if (clickedImg) {
+        const src = clickedImg.getAttribute('src');
+        const caption = clickedImg.getAttribute('data-caption') || clickedImg.getAttribute('alt') || '';
+        openLightbox(src, caption);
+    }
+});
+
+// 2. Bấm nút [x] để đóng
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+}
+
+// 3. BẤM RA VÙNG TỐI BÊN NGOÀI ĐỂ ĐÓNG NGAY LẬP TỨC
+if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+        // Nếu điểm click trúng nền đen (lightbox-modal) thì đóng
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// 4. Bấm phím ESC để đóng Lightbox trước (không làm tắt cửa sổ Work)
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+        if (lightbox && lightbox.classList.contains('is-active')) {
+            e.stopImmediatePropagation();
+            closeLightbox();
+        }
+    }
+});
+
+
+
+
 
 // ================= MUSIC & NIGHT MODE LOGIC =================
 const musicBtn = document.getElementById('musicToggle');

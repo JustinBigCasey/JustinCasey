@@ -34,7 +34,11 @@
     src: url('font/WinniePersonalUse-OG5dP.otf') format('opentype');
 }
 
-/* ================= RESET & CẤU TRÚC CHÍNH ================= */
+
+
+
+
+/* ================= MAIn ================= */
 * {
     box-sizing: border-box;
 }
@@ -74,6 +78,10 @@ main {
 .link:hover {
     color: rgb(238, 131, 250);
 }
+
+
+
+
 
 /* ================= HOME ================= */
 .home {
@@ -156,6 +164,9 @@ main {
     color: rgb(61, 60, 60);
 }
 
+
+
+
 /* ================= EXPLORE BUTTONS ================= */
 .exploreBtn {
     margin-top: 30px;
@@ -215,6 +226,11 @@ main {
     transform: translateY(2px) scale(0.96);
 }
 
+
+
+
+
+
 /* ================= MUSIC BUTTON ================= */
 .musicPlay {
     position: fixed;
@@ -270,6 +286,10 @@ body.dark-mode .music:hover .btn-music {
         transform: translateY(-8px);
     }
 }
+
+
+
+
 
 /* ================= FOOTER ================= */
 footer {
@@ -383,6 +403,412 @@ footer {
     letter-spacing: 0.8px;
     margin: 0;
 }
+
+
+
+
+/* ================= WORK WINDOW ================= */
+
+.workBox {
+    width: min(120vw, 1000px) !important;
+    height: 75vh !important;
+    max-height: 500px;
+
+}
+
+.work-content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.work-text {
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 18px 20px 18px;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+}
+
+/* scrollbar  */
+.work-text::-webkit-scrollbar {
+    width: 14px;
+}
+
+.work-text::-webkit-scrollbar-track {
+    background: rgba(240, 230, 238, 0.5);
+    border-radius: 14px;
+}
+
+.work-text::-webkit-scrollbar-thumb {
+    background: rgb(214, 43, 226);
+    border-radius: 14px;
+}
+
+.work-text::-webkit-scrollbar-thumb:hover {
+    background: rgb(226, 111, 234);
+}
+
+.work-text::-webkit-scrollbar-button:single-button:vertical:decrement {
+    height: 18px;
+    width: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 11px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d62be2' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><polyline points='19 15 12 8 5 15'/></svg>");
+    cursor: pointer;
+}
+
+.work-text::-webkit-scrollbar-button:single-button:vertical:increment {
+    height: 18px;
+    width: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 11px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d62be2' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 9 12 16 19 9'/></svg>");
+    cursor: pointer;
+}
+
+
+/* Bố cục lưới 2 cột nhóm kỹ năng */
+.skills-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.skill-category {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.skill-group-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2b082e;
+    letter-spacing: 1.5px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Cụm bong bóng tags */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Từng thẻ tag pill */
+.skill-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 350;
+    color: #220922;
+    background-color: #ffffff;
+    border: 1.5px solid #220922;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: default;
+    box-shadow: 2px 3px 0px rgba(34, 9, 34, 0.15);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px) scale(1.04);
+    background-color: rgb(214, 43, 226);
+    border-color: rgb(214, 43, 226);
+    color: #ffffff;
+    box-shadow: 0px 5px 12px rgba(214, 43, 226, 0.35);
+}
+
+
+
+/* ================= ILLUSTRATION GALLERY GRID ================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+}
+
+/* Khung bao bọc từng bức tranh */
+.gallery-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: rgba(34, 9, 34, 0.05);
+    /* border: 2px solid rgba(34, 9, 34, 0.15);
+    box-shadow: 2px 3px 0px rgba(34, 9, 34, 0.08); */
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    will-change: transform;
+}
+
+/* Ảnh bên trong */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cắt ảnh vừa khít ô vuông không bị méo */
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+/* Hover: Nhấc nhẹ khung và zoom nhẹ ảnh */
+.gallery-item:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.08);
+}
+
+
+
+
+/* ================= LIGHTBOX PREVIEW TOÀN MÀN HÌNH ================= */
+
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 5, 15, 0.85);
+    /* Nền tối mờ phủ kín 100% màn hình */
+    backdrop-filter: blur(8px);
+    /* Hiệu ứng làm mờ trang web phía sau */
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999 !important;
+    /* Nổi lên trên cùng tuyệt đối */
+    display: none;
+    /* Mặc định ẩn */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    cursor: zoom-out;
+    /* Chuột hiển thị icon thu nhỏ khi rê trên vùng tối */
+}
+
+/* Khi đang mở */
+.lightbox-modal.is-active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Khung chứa ảnh và chữ */
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: default;
+    /* Rê vào ảnh thì chuột bình thường */
+    transform: scale(0.9);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightbox-modal.is-active .lightbox-content {
+    transform: scale(1);
+}
+
+/* Ảnh phóng to chính */
+.lightbox-img {
+    max-width: 85vw;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Dòng chữ mô tả dưới ảnh */
+.lightbox-caption {
+    margin-top: 14px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    max-width: 85vw;
+}
+
+.lightbox-caption i,
+.lightbox-caption em {
+    font-style: italic;
+    color: #fbcfe8;
+}
+
+/* Nút tắt [x] góc phải trên */
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-size: 38px;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
+    user-select: none;
+    z-index: 1000000;
+}
+
+.lightbox-close:hover {
+    color: #ff3366;
+    transform: scale(1.2);
+}
+
+
+/* ================= PROJECT CARD STYLES ================= */
+
+.project-section {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Thẻ bao bọc dự án */
+.project-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    /* background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(34, 9, 34, 0.15);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 3px 4px 0px rgba(34, 9, 34, 0.08); */
+}
+
+/* Ảnh thumbnail dự án */
+.project-img {
+    width: 240px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    /* border: 2px solid rgb(34, 9, 34);
+    box-shadow: 3px 3px 0px rgba(34, 9, 34, 0.2); */
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.project-img:hover {
+    transform: scale(1.02);
+}
+
+/* Khối nội dung bên phải */
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+/* Tiêu đề dự án */
+.project-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: rgb(214, 43, 226);
+    margin: 0;
+}
+
+/* Đoạn văn mô tả */
+.project-desc {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1rem;
+    font-weight: 350;
+    line-height: 1.5;
+    color: #2b2b2b;
+    margin: 0;
+}
+
+/* Khung chứa nút bấm góc phải */
+.project-btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-right: 200px;
+}
+
+/* Nút bấm vàng pastel giống ảnh mẫu */
+.project-btn {
+    display: inline-block;
+    background-color: #fbdaf8;
+    color: rgb(214, 43, 226);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 2px 3px 0px rgba(217, 6, 175, 0.15);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    background-color: #fbeefa;
+    box-shadow: 0px 4px 10px rgba(217, 6, 199, 0.25);
+}
+
+.project-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+
+/*  OTHER DEV PROJECTS  */
+
+.other-work-section {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Kế thừa lại đúng font-size và độ mảnh 290 của phần About */
+.other-work-section .about-skills-list {
+    margin: 6px 0 10px 0;
+    padding-left: 22px;
+}
+
+.other-work-section .about-skills-list li {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 290;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: #020202;
+}
+
+.other-work-more {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 290;
+    font-size: 1.15rem;
+    color: #1a1818;
+    margin: 4px 0 0 0;
+}
+
+
+
 
 /* ================= ABOUT WINDOW ================= */
 .aboutBox {
@@ -600,8 +1026,8 @@ footer {
     padding-left: 25px;
     padding-right: 12px;
     -webkit-overflow-scrolling: touch;
-    user-select: text;
-    /* Cho phép bôi đen chọn văn bản */
+    user-select: none;
+
 }
 
 .about-msg {
@@ -633,12 +1059,13 @@ footer {
 .highlight-txt {
     color: rgb(214, 43, 226);
     font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    /* text-decoration: underline;
+    text-underline-offset: 4px; */
+    transition: all 0.1s ease-in-out;
 }
 
 .highlight-txt:hover {
-    color: rgb(213, 92, 222);
+    color: rgb(136, 3, 145);
 }
 
 #closeAboutBtn,
@@ -662,6 +1089,8 @@ footer {
     color: #ff3366;
     transform: translateY(2px) scale(1);
 }
+
+
 
 /* ================= NIGHT MODE ================= */
 .nightMode {
@@ -695,7 +1124,11 @@ footer {
     transform: scale(0.95);
 }
 
-/* ================= DARK MODE STYLES ================= */
+
+
+
+
+/* ================= DARK MODE ================= */
 body::before {
     content: '';
     position: fixed;
@@ -735,6 +1168,10 @@ body.dark-mode .highlight-txt {
     color: #f09bc7;
 }
 
+body.dark-mode .highlight-txt:hover {
+    color: rgb(164, 74, 170)
+}
+
 body.dark-mode .window-content {
     border-right: 2px solid rgb(255, 254, 254);
     border-left: 2px solid rgb(255, 254, 254);
@@ -769,7 +1206,7 @@ body.dark-mode .butifuBtn:hover .btn-text {
     text-shadow: 0 3px 8px rgba(236, 145, 243, 0.3);
 }
 
-/* Đã loại bỏ hoàn toàn .aboutBox để tránh đè Animation */
+
 .homeBox,
 .window-bar,
 .window-content,
@@ -847,6 +1284,86 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:decr
 body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:increment {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f472b6' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 9 12 16 19 9'/></svg>");
 }
+
+/* Đồng bộ Dark Mode cho Work */
+body.dark-mode .workBox {
+    background-color: #2b2636;
+    box-shadow: 0px 6px #4a284e;
+    border: 2px solid #ffffff;
+}
+
+body.dark-mode .skill-group-title {
+    color: #f1f5f9;
+}
+
+body.dark-mode .skill-tag {
+    background-color: #1a1622;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    color: #f3eef8;
+    box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .skill-tag:hover {
+    background-color: #d946ef;
+    border-color: #f472b6;
+    color: #ffffff;
+    box-shadow: 0px 5px 14px rgba(217, 70, 239, 0.5);
+}
+
+body.dark-mode .work-text::-webkit-scrollbar-thumb {
+    background: #f09bc7;
+}
+
+body.dark-mode .work-text::-webkit-scrollbar-thumb:hover {
+    background: #d64992;
+}
+
+/* body.dark-mode .project-card {
+    background: rgba(26, 22, 34, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.3);
+} */
+
+body.dark-mode .project-img {
+    border-color: #ffffff;
+    box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .project-title {
+    color: #f09bc7;
+}
+
+body.dark-mode .project-desc {
+    color: #e2e8f0;
+}
+
+body.dark-mode .project-btn {
+    background-color: #3b163b;
+    color: #fd8aee;
+    border-color: #780f73;
+    box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .project-btn:hover {
+    background-color: #531a4f;
+    box-shadow: 0px 4px 12px rgba(251, 36, 204, 0.25);
+}
+
+body.dark-mode .other-work-section .about-skills-list li,
+body.dark-mode .other-work-more {
+    color: #f1f5f9;
+}
+
+/* body.dark-mode .gallery-item {
+    background-color: #1a1622;
+    border-color: rgba(255, 255, 255, 0.2);
+} */
+
+/* body.dark-mode .gallery-item:hover {
+    box-shadow: 0 8px 18px rgba(244, 114, 182, 0.45);
+} */
+
+
 
 /* ================= WAVE & SCROLLING PATTERN ================= */
 .wave-container {
@@ -1005,6 +1522,10 @@ body.dark-mode .water-pattern-track {
     opacity: 0.35;
 }
 
+
+
+
+
 /* ================= RESPONSIVE MOBILE ================= */
 @media (max-width: 768px) {
     .nightMode {
@@ -1134,4 +1655,64 @@ body.dark-mode .water-pattern-track {
         width: 38px;
         height: 38px;
     }
+
+    #workWindow {
+        width: 95vw !important;
+        height: 82vh !important;
+    }
+
+    .skills-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .skill-tag {
+        font-size: 0.82rem;
+        padding: 5px 10px;
+    }
+
+    .project-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        gap: 14px;
+    }
+
+    .project-img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 16/10;
+    }
+
+    .project-btn-wrap {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .gallery-item {
+        border-radius: 8px;
+    }
+
+    lightbox-img {
+        max-width: 92vw;
+        max-height: 70vh;
+    }
+
+    .lightbox-caption {
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+
+    .lightbox-close {
+        top: 14px;
+        right: 18px;
+        font-size: 32px;
+    }
+
 }
