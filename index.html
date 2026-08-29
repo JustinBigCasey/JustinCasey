@@ -12,8 +12,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Archivo+Black&family=Bebas+Neue&family=Berkshire+Swash&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Caprasimo&family=Chango&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Darumadrop+One&family=Dela+Gothic+One&family=Gloria+Hallelujah&family=Gruppo&family=Homemade+Apple&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Julius+Sans+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Spray+Paint&family=Staatliches&family=Titan+One&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Wix+Madefor+Display:wght@400..800&family=Yuyu&display=swap"
         rel="stylesheet">
+
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/f953524533.js" crossorigin="anonymous"></script>
@@ -21,14 +23,24 @@
 
 <body>
     <main>
-
+        <!-- night mode -->
         <div class="nightMode">
-            <button class="Night" id="nightToggle" title="Chuyển chế độ sáng/tối">
+            <button class="Night" id="nightToggle">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
 
+        <!-- music jaja -->
+        <div class="musicPlay">
 
+            <button class="music" id="musicToggle">
+                <img src="image/icoc.png" alt="Music" class="btn-music" id="musicImg">
+            </button>
+
+            <audio id="bgMusic" src="audio/Nihahaha.mp3" loop preload="auto"></audio>
+        </div>
+
+        <!-- homeu -->
         <div class="home">
             <div class="homeBox">
                 <div class="window-bar">
@@ -42,31 +54,31 @@
                     <div class="exploreBtn">
 
                         <!-- Nút 1: About -->
-                        <button class="butifuBtn" id="openAboutBtn" title="About Me">
+                        <button class="butifuBtn" id="openAboutBtn">
                             <img src="image/icoc.png" alt="About" class="btn-img">
                             <span class="btn-text">about</span>
                         </button>
 
-                        <!-- Nút 2: Links -->
-                        <button class="butifuBtn" title="Projects">
-                            <img src="image/icoc.png" alt="Work" class="btn-img">
-                            <span class="btn-text">work</span>
-                        </button>
-
-                        <!-- Nút 3: Works -->
-                        <button class="butifuBtn" title="Links">
+                        <!-- Nút 2: Works -->
+                        <button class="butifuBtn" id="openWorkBtn">
                             <img src="image/icoc.png" alt="Links" class="btn-img">
                             <span class="btn-text">links</span>
                         </button>
 
+                        <!-- Nút 3: Links -->
+                        <button class="butifuBtn" id="openLinksBtn">
+                            <img src="image/icoc.png" alt="Work" class="btn-img">
+                            <span class="btn-text">work</span>
+                        </button>
+
                         <!-- Nút 4: Faq -->
-                        <button class="butifuBtn" title="Faq">
+                        <button class="butifuBtn" id="openFaqBtn">
                             <img src="image/icoc.png" alt="Faq" class="btn-img">
                             <span class="btn-text">Faq</span>
                         </button>
 
                         <!-- Nút 5: Contact -->
-                        <button class="butifuBtn" title="Contact">
+                        <button class="butifuBtn" id="openContactBtn">
                             <img src="image/icoc.png" alt="Contact" class="btn-img">
                             <span class="btn-text">Contact</span>
                         </button>
@@ -208,7 +220,7 @@
                         <li>learning game development</li>
                         <li>doodling, digital illustration</li>
                         <li>bingeing anime and Japanese pop culture</li>
-                        <li>bossa nova song (Laufey &lt;3) </li>
+                        <li>love bossa nova typa music (Laufey &lt;3) </li>
                         <li>collecting cute stuff with aesthetic vibes :3 </li>
                         <li>gaming (MOBA, gacha, &amp more...)</li>
                     </ul>
@@ -224,13 +236,28 @@
                             i have native fluency in <span class="highlight-txt">Vietnamese</span> and professional
                             working proficiency in <span class="highlight-txt">English</span> </p>
                         <p class="info-item-sub">
-                            Currently learning Japanese at a really beginner level. still trying my best! (ง >_&lt;)ง
+                            currently learning Japanese at a really beginner level. still trying my best! (ง >_&lt;)ง
                         </p>
                     </div>
                 </div>
 
             </div>
         </div>
+    </div>
+
+    <!-- Work -->
+    <div class="workBox" id="workWindow">
+
+    </div>
+
+    <!-- Links -->
+    <div class="linksBox" id="linksWindow">
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faqBox" id="faqWindow">
+
     </div>
 
 

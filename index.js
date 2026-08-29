@@ -1,5 +1,4 @@
-
-// ====== ABOUT ======
+// ====== ABOUT WINDOW ======
 const openBtn = document.getElementById('openAboutBtn');
 const closeBtn = document.getElementById('closeAboutBtn');
 const aboutWin = document.getElementById('aboutWindow');
@@ -13,6 +12,7 @@ let initialX = 0;
 let initialY = 0;
 let isDragging = false;
 let animationFrameId = null;
+let hasCentered = false;
 
 // Hàm cập nhật vị trí lên CSS Variables
 function setWindowPos(x, y) {
@@ -24,25 +24,57 @@ function setWindowPos(x, y) {
 
 // Canh giữa màn hình
 function centerWindow() {
-    const winWidth = aboutWin.offsetWidth || Math.min(window.innerWidth * 0.9, 760);
-    const winHeight = aboutWin.offsetHeight || window.innerHeight * 0.68;
+    const winWidth = Math.min(window.innerWidth * 0.9, 860);
+    const winHeight = window.innerHeight * 0.7;
     const x = Math.round((window.innerWidth - winWidth) / 2);
     const y = Math.round((window.innerHeight - winHeight) / 2);
     setWindowPos(x, y);
 }
 
-// 1. Mở Cửa Sổ (Phóng to bung nở)
-openBtn.addEventListener('click', () => {
-    centerWindow();
-    aboutWin.classList.add('is-visible');
+// Hàm mở cửa sổ
+function openWindow() {
+    if (!hasCentered) {
+        centerWindow();
+        hasCentered = true;
+    }
+    aboutWin.classList.remove('is-closing');
+    aboutWin.classList.add('is-visible', 'is-opening');
+
+    setTimeout(() => {
+        aboutWin.classList.remove('is-opening');
+    }, 350);
+}
+
+// Hàm đóng cửa sổ
+function closeWindow() {
+    // Chỉ chạy đóng khi cửa sổ đang mở và chưa trong quá trình đóng
+    if (!aboutWin.classList.contains('is-visible') || aboutWin.classList.contains('is-closing')) return;
+
+    aboutWin.classList.remove('is-opening');
+    aboutWin.classList.add('is-closing');
+
+    setTimeout(() => {
+        aboutWin.classList.remove('is-visible', 'is-closing');
+    }, 280);
+}
+
+// 1. Mở Cửa Sổ
+openBtn.addEventListener('click', openWindow);
+
+// 2. Đóng Cửa Sổ khi bấm nút [x]
+closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeWindow();
 });
 
-// 2. Đóng Cửa Sổ (Thu nhỏ biến mất)
-closeBtn.addEventListener('click', () => {
-    aboutWin.classList.remove('is-visible');
+// 3. Đóng Cửa Sổ khi bấm phím ESC trên bàn phím
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+        closeWindow();
+    }
 });
 
-// 3. Xử lý Kéo Thả
+// 4. Xử lý Kéo Thả
 function getPointerPos(e) {
     if (e.touches && e.touches.length > 0) {
         return { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -51,10 +83,11 @@ function getPointerPos(e) {
 }
 
 function startDrag(e) {
-    if (e.target.id === 'closeAboutBtn') return;
+    if (e.target.id === 'closeAboutBtn' || e.target.closest('#closeAboutBtn')) return;
 
     isDragging = true;
-    aboutWin.classList.add('is-dragging'); // Tắt transition để kéo dính tay
+    aboutWin.classList.remove('is-opening');
+    aboutWin.classList.add('is-dragging');
 
     const pos = getPointerPos(e);
     startX = pos.x;
@@ -103,27 +136,106 @@ window.addEventListener('touchmove', onDrag, { passive: false });
 window.addEventListener('touchend', stopDrag);
 
 
+// ================= MUSIC & NIGHT MODE LOGIC =================
+const musicBtn = document.getElementById('musicToggle');
+const musicImg = document.getElementById('musicImg');
+const bgMusic = document.getElementById('bgMusic');
 
-
-// ====== NIGHT MODE ========
+// Khai báo biến Night Mode lên đầu trước khi sử dụng
 const nightBtn = document.getElementById('nightToggle');
-const nightIcon = nightBtn.querySelector('i');
+const nightIcon = nightBtn ? nightBtn.querySelector('i') : null;
 
-// Tự động kiểm tra xem trước đó người dùng có chọn Dark mode không
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    nightIcon.classList.replace('fa-moon', 'fa-sun');
+// 1. Danh sách các frame ảnh cho Sáng và Tối
+const framesLight = [
+    'image/icoc.png',
+    'image/icoc.png',
+    'image/icoc.png'
+];
+
+const framesDark = [
+    'image/icoc.png',
+    'image/icoc.png',
+    'image/icoc.png'
+];
+
+// Preload toàn bộ ảnh
+[...framesLight, ...framesDark].forEach((src) => {
+    const img = new Image();
+    img.src = src;
+});
+
+let isPlaying = false;
+let currentFrameIndex = 0;
+let animationTimer = null;
+const FRAME_SPEED = 160;
+
+// Lấy danh sách ảnh theo theme hiện tại
+function getActiveFrames() {
+    return document.body.classList.contains('dark-mode') ? framesDark : framesLight;
 }
 
-nightBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+// Cập nhật ảnh hiển thị
+function updateMusicImage() {
+    if (!musicImg) return;
+    const frames = getActiveFrames();
+    musicImg.src = frames[currentFrameIndex % frames.length];
+}
 
-    // Đổi icon giữa Mặt trăng và Mặt trời 
-    if (document.body.classList.contains('dark-mode')) {
-        nightIcon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        nightIcon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'light');
+// Bắt đầu vòng lặp chuyển frame khi phát nhạc
+function startFrameLoop() {
+    if (animationTimer) clearInterval(animationTimer);
+    animationTimer = setInterval(() => {
+        const frames = getActiveFrames();
+        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+        if (musicImg) musicImg.src = frames[currentFrameIndex];
+    }, FRAME_SPEED);
+}
+
+// Dừng hoạt họa và về lại frame tĩnh
+function stopFrameLoop() {
+    if (animationTimer) {
+        clearInterval(animationTimer);
+        animationTimer = null;
     }
-}); 
+    currentFrameIndex = 0;
+    updateMusicImage();
+}
+
+// Xử lý bật / tắt nhạc
+if (musicBtn && bgMusic) {
+    musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            bgMusic.pause();
+            stopFrameLoop();
+            isPlaying = false;
+        } else {
+            bgMusic.play().then(() => {
+                startFrameLoop();
+                isPlaying = true;
+            }).catch((err) => {
+                console.error("Lỗi phát nhạc:", err);
+            });
+        }
+    });
+}
+
+// Kiểm tra LocalStorage khi vừa load trang
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (nightIcon) nightIcon.classList.replace('fa-moon', 'fa-sun');
+    updateMusicImage();
+}
+
+// Xử lý nút Night Mode
+if (nightBtn && nightIcon) {
+    nightBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+
+        const isDark = document.body.classList.contains('dark-mode');
+        nightIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+        // Đổi bộ ảnh music tương ứng với theme mà không dừng bài nhạc
+        updateMusicImage();
+    });
+}
