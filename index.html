@@ -9,13 +9,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="image/icoc.png">
 
-    <!-- Fonts -->
+    <!-- Fonts (Đã loại bỏ lỗi font không tồn tại) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Archivo+Black&family=Bebas+Neue&family=Berkshire+Swash&family=Big+Shoulders+Inline:opsz,wght@10..72,100..900&family=Caprasimo&family=Chango&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Darumadrop+One&family=Dela+Gothic+One&family=Gloria+Hallelujah&family=Gruppo&family=Homemade+Apple&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Julius+Sans+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Spray+Paint&family=Staatliches&family=Titan+One&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Wix+Madefor+Display:wght@400..800&family=Yuyu&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=MotleyForces&family=Wix+Madefor+Display:wght@400..800&display=swap"
         rel="stylesheet">
-
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/f953524533.js" crossorigin="anonymous"></script>
@@ -23,24 +22,22 @@
 
 <body>
     <main>
-        <!-- night mode -->
+        <!-- Night mode toggle -->
         <div class="nightMode">
-            <button class="Night" id="nightToggle">
+            <button class="Night" id="nightToggle" title="Chuyển chế độ sáng/tối">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
 
-        <!-- music jaja -->
+        <!-- Music player -->
         <div class="musicPlay">
-
-            <button class="music" id="musicToggle">
+            <button class="music" id="musicToggle" title="Phát nhạc">
                 <img src="image/icoc.png" alt="Music" class="btn-music" id="musicImg">
             </button>
-
             <audio id="bgMusic" src="audio/Nihahaha.mp3" loop preload="auto"></audio>
         </div>
 
-        <!-- homeu -->
+        <!-- Home Box -->
         <div class="home">
             <div class="homeBox">
                 <div class="window-bar">
@@ -49,55 +46,53 @@
 
                 <div class="window-content">
                     <h1 class="intro-title">Helo! <span style="color:rgb(214, 43, 226)">i'm justin</span></h1>
-                    <h2 class="intro-h2">sophomore, developer, and gamer </h2>
+                    <h2 class="intro-h2">sophomore, developer, and gamer</h2>
 
                     <div class="exploreBtn">
-
                         <!-- Nút 1: About -->
-                        <button class="butifuBtn" id="openAboutBtn">
+                        <button class="butifuBtn" id="openAboutBtn" title="About Me">
                             <img src="image/icoc.png" alt="About" class="btn-img">
                             <span class="btn-text">about</span>
                         </button>
 
-                        <!-- Nút 2: Works -->
-                        <button class="butifuBtn" id="openWorkBtn">
-                            <img src="image/icoc.png" alt="Links" class="btn-img">
-                            <span class="btn-text">links</span>
-                        </button>
-
-                        <!-- Nút 3: Links -->
-                        <button class="butifuBtn" id="openLinksBtn">
+                        <!-- Nút 2: Work -->
+                        <button class="butifuBtn" id="openWorkBtn" title="Works">
                             <img src="image/icoc.png" alt="Work" class="btn-img">
                             <span class="btn-text">work</span>
                         </button>
 
+                        <!-- Nút 3: Links -->
+                        <button class="butifuBtn" id="openLinksBtn" title="Links">
+                            <img src="image/icoc.png" alt="Links" class="btn-img">
+                            <span class="btn-text">links</span>
+                        </button>
+
                         <!-- Nút 4: Faq -->
-                        <button class="butifuBtn" id="openFaqBtn">
+                        <button class="butifuBtn" id="openFaqBtn" title="FAQ">
                             <img src="image/icoc.png" alt="Faq" class="btn-img">
                             <span class="btn-text">Faq</span>
                         </button>
 
                         <!-- Nút 5: Contact -->
-                        <button class="butifuBtn" id="openContactBtn">
+                        <button class="butifuBtn" id="openContactBtn" title="Contact">
                             <img src="image/icoc.png" alt="Contact" class="btn-img">
                             <span class="btn-text">Contact</span>
                         </button>
                     </div>
-
-
                 </div>
             </div>
         </div>
 
+        <!-- Footer -->
         <footer>
             <div class="mediu">
-                <a href="https://www.facebook.com/thienan.huynh.923519/" target="_blank">
+                <a href="https://www.facebook.com/thienan.huynh.923519/" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-facebook"></i>
                 </a>
-                <a href="https://x.com/JustinBigCasey" target="_blank">
+                <a href="https://x.com/JustinBigCasey" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-x-twitter"></i>
                 </a>
-                <a href="https://www.youtube.com/@wamsalijis" target="_blank">
+                <a href="https://www.youtube.com/@wamsalijis" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
             </div>
@@ -107,12 +102,8 @@
             </div>
         </footer>
 
-
-        <!-- ================= HIỆU ỨNG SÓNG NƯỚC ================= -->
-
+        <!-- Hiệu ứng sóng nước -->
         <div class="wave-container">
-
-            <!-- 1.  -->
             <div class="water-pattern-track">
                 <div class="pattern-loop">
                     <img src="image/icoc.png" alt="sticker">
@@ -136,7 +127,6 @@
                 </div>
             </div>
 
-            <!-- 2. -->
             <div class="waves-wrapper">
                 <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -151,26 +141,19 @@
                         <use href="#gentle-wave" xlink:href="#gentle-wave" x="48" y="7" class="wave-layer-4" />
                     </g>
                 </svg>
-
                 <div class="water-body"></div>
             </div>
         </div>
-
     </main>
 
-
-    <!-- About-->
+    <!-- Cửa sổ About Me -->
     <div class="aboutBox" id="aboutWindow">
-
-        <!-- tiêu đề -->
         <div class="window-bar drag-handle">
             <span class="bar-title">about me</span>
             <span class="bar-close" id="closeAboutBtn">[x]</span>
         </div>
 
-        <!-- nội dung chính -->
         <div class="window-content about-content">
-
             <div class="about-header">
                 <img src="image/icoc.png" alt="Avatar" class="about-avatar">
                 <div>
@@ -178,9 +161,9 @@
                         <h3 class="about-name">Justin Casey</h3>
                         <span class="about-jp">Huynh Thien An</span>
                     </div>
-                    <p class="about-sub"> Software developer, student</p>
+                    <p class="about-sub">Software developer, student</p>
                     <p class="about-sub">Computer Science sophomore at
-                        <a href="https://tdtu.edu.vn/" target="_blank" class="link">TDTU</a>
+                        <a href="https://tdtu.edu.vn/" target="_blank" rel="noopener noreferrer" class="link">TDTU</a>
                     </p>
                 </div>
             </div>
@@ -196,13 +179,12 @@
                     <li>craft responsive and interactive <span class="highlight-txt">frontend interfaces</span>,</li>
                     <li>design software architectures and <span class="highlight-txt">backend systems</span>,</li>
                     <li>develop full-stack web applications, and</li>
-                    <li>learn & explore <span class="highlight-txt">game development</span> in my free time!</li>
+                    <li>learn &amp; explore <span class="highlight-txt">game development</span> in my free time!</li>
                 </ul>
 
                 <p class="about-msg">
                     always excited to build cool stuff, learn new tech, and play games.
                 </p>
-
 
                 <div class="info-section">
                     <h4 class="info-section-title">EDUCATION</h4>
@@ -212,57 +194,39 @@
                     </div>
                 </div>
 
-
-
                 <div class="info-section">
                     <h4 class="info-section-title">OTHER INTERESTS</h4>
                     <ul class="about-skills-list">
                         <li>learning game development</li>
                         <li>doodling, digital illustration</li>
                         <li>bingeing anime and Japanese pop culture</li>
-                        <li>love bossa nova typa music (Laufey &lt;3) </li>
-                        <li>collecting cute stuff with aesthetic vibes :3 </li>
-                        <li>gaming (MOBA, gacha, &amp more...)</li>
+                        <li>love bossa nova typa music (Laufey &lt;3)</li>
+                        <li>collecting cute stuff with aesthetic vibes :3</li>
+                        <li>gaming (MOBA, gacha, &amp; more...)</li>
                     </ul>
                 </div>
 
-
-
                 <div class="info-section">
                     <h4 class="info-section-title">LANGUAGE PROFICIENCY</h4>
-
                     <div class="info-item-block">
                         <p class="info-item-main">
                             i have native fluency in <span class="highlight-txt">Vietnamese</span> and professional
-                            working proficiency in <span class="highlight-txt">English</span> </p>
+                            working proficiency in <span class="highlight-txt">English</span>
+                        </p>
                         <p class="info-item-sub">
                             currently learning Japanese at a really beginner level. still trying my best! (ง >_&lt;)ง
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- Work -->
-    <div class="workBox" id="workWindow">
-
-    </div>
-
-    <!-- Links -->
-    <div class="linksBox" id="linksWindow">
-
-    </div>
-
-    <!-- FAQ -->
-    <div class="faqBox" id="faqWindow">
-
-    </div>
-
-
-
-    </main>
+    <!-- Các cửa sổ khác (Dự phòng mở rộng) -->
+    <div class="workBox" id="workWindow"></div>
+    <div class="linksBox" id="linksWindow"></div>
+    <div class="faqBox" id="faqWindow"></div>
+    <div class="contactBox" id="contactWindow"></div>
 
     <script src="index.js"></script>
 </body>

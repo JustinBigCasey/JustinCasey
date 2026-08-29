@@ -1,6 +1,4 @@
 /* ================= FONT DECLARATIONS ================= */
-
-
 @font-face {
     font-family: 'AlloyInk-OTF';
     src: url('font/AlloyInk-lgdWw.otf') format('opentype');
@@ -12,83 +10,13 @@
 }
 
 @font-face {
-    font-family: 'AnjelikaRose';
-    src: url('font/AnjelikaRose-oRGd.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'AnjelikaRose-Hollow';
-    src: url('font/AnjelikaRoseHollow-4K1p.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'AnjelikaRose-Thin';
-    src: url('font/AnjelikaRoseThin-08o9.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'BadUnicorn';
-    src: url('font/BadUnicornDemoRegular-BVWx.ttf') format('truetype');
-}
-
-@font-face {
     font-family: 'BlueIsland';
     src: url('font/BlueIslandStylishCuteCursive-vnM5A.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Bomberman';
-    src: url('font/BombermanDemo-lxPEV.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Cookiemonster';
-    src: url('font/Cookiemonster-gv11.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'CutiePatootie';
-    src: url('font/CutiePatootie-Rgjv.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'CutiePatootie-Hollow';
-    src: url('font/CutiePatootieHollow-BpZG.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'CutiePatootie-Skinny';
-    src: url('font/CutiePatootieSkinny-8zXZ.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'CutiePop';
-    src: url('font/CutiePop-Yydq.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'DaisyDays';
-    src: url('font/DaisyDaysPersonalUse-WyRnv.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'EstieBestie';
-    src: url('font/EstieBestieRegular-R9elW.ttf') format('truetype');
-}
-
-@font-face {
     font-family: 'LittleMiracles';
     src: url('font/LittleMiracles-d9xV7.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MoodyAdolescent-OTF';
-    src: url('font/MoodyadolescentRegular-jE00v.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'MoodyAdolescent';
-    src: url('font/MoodyAdolescentRegular-z8VV1.ttf') format('truetype');
 }
 
 @font-face {
@@ -102,30 +30,11 @@
 }
 
 @font-face {
-    font-family: 'Schofield';
-    src: url('font/Schofield-d9Erg.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Schofield-Outline';
-    src: url('font/SchofieldOutline-w1XoP.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'Winnie-E451e';
-    src: url('font/WinniePersonalUse-E451e.ttf') format('truetype');
-}
-
-@font-face {
     font-family: 'Winnie-OG5dP';
     src: url('font/WinniePersonalUse-OG5dP.otf') format('opentype');
 }
 
-
-
-/* ===========
-      RESET & KHÓA CUỘN
-=============*/
+/* ================= RESET & CẤU TRÚC CHÍNH ================= */
 * {
     box-sizing: border-box;
 }
@@ -134,8 +43,8 @@ html,
 body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     position: relative;
     background: linear-gradient(180deg, #ffffff 0%, #f7ddf7 45%, #f1c2f1 75%, #ffffff 100%);
@@ -166,11 +75,7 @@ main {
     color: rgb(238, 131, 250);
 }
 
-
-
-/* ===========
-      HOME
-=============*/
+/* ================= HOME ================= */
 .home {
     flex: 1;
     width: 100%;
@@ -181,7 +86,6 @@ main {
     transform: translateY(10px);
     position: relative;
     z-index: 2;
-
 }
 
 .homeBox {
@@ -210,12 +114,11 @@ main {
 }
 
 .bar-title {
-    font-family: 'Winnie-OG5dP';
+    font-family: 'Winnie-OG5dP', sans-serif;
     font-size: clamp(26px, 2.5vw, 27px);
     color: rgb(236, 232, 235);
     user-select: none;
 }
-
 
 .window-content {
     padding: 24px 16px;
@@ -231,9 +134,8 @@ main {
     align-items: center;
 }
 
-
 .intro-title {
-    font-family: 'MotleyForces';
+    font-family: 'MotleyForces', cursive;
     font-weight: 100;
     font-size: clamp(4.5rem, 12vh, 5rem);
     text-align: center;
@@ -244,7 +146,7 @@ main {
 }
 
 .intro-h2 {
-    font-family: 'Wix Madefor Display';
+    font-family: 'Wix Madefor Display', sans-serif;
     font-size: clamp(1.8rem, 2vh, 2.3rem);
     text-align: center;
     font-weight: lighter;
@@ -254,13 +156,7 @@ main {
     color: rgb(61, 60, 60);
 }
 
-
-
-
-
-
-/* buttun */
-
+/* ================= EXPLORE BUTTONS ================= */
 .exploreBtn {
     margin-top: 30px;
     display: flex;
@@ -268,7 +164,6 @@ main {
     align-items: center;
     gap: 35px;
 }
-
 
 .butifuBtn {
     background: none;
@@ -296,7 +191,7 @@ main {
 
 .btn-text {
     display: inline-block;
-    font-family: 'RustyHooks';
+    font-family: 'RustyHooks', cursive;
     font-size: 20px;
     color: rgb(67, 57, 67);
     user-select: none;
@@ -320,10 +215,7 @@ main {
     transform: translateY(2px) scale(0.96);
 }
 
-
-
-/* ================= MUSIC BUTTON (TRONG SUỐT, NHẤP NHÔ, ĐỒNG BỘ DARK MODE) ================= */
-
+/* ================= MUSIC BUTTON ================= */
 .musicPlay {
     position: fixed;
     bottom: 40px;
@@ -341,7 +233,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
     animation: floatUpDown 5.9s ease-in-out infinite;
     will-change: transform;
 }
@@ -360,7 +251,6 @@ main {
     filter: drop-shadow(0 2px 9px rgba(24, 23, 24, 0.5));
 }
 
-
 body.dark-mode .music:hover .btn-music {
     filter: drop-shadow(0 2px 3px rgba(245, 238, 242, 0.7));
 }
@@ -368,7 +258,6 @@ body.dark-mode .music:hover .btn-music {
 .music:active .btn-music {
     transform: scale(0.98);
 }
-
 
 @keyframes floatUpDown {
 
@@ -382,25 +271,7 @@ body.dark-mode .music:hover .btn-music {
     }
 }
 
-/* Responsive mobile */
-@media (max-width: 768px) {
-    .musicPlay {
-        bottom: 14px;
-        right: 14px;
-    }
-
-    .btn-music {
-        width: 38px;
-        height: 38px;
-    }
-}
-
-
-
-/* ===========
-      FOOTER
-=============*/
-
+/* ================= FOOTER ================= */
 footer {
     position: fixed;
     bottom: 0;
@@ -464,16 +335,11 @@ footer {
 }
 
 .copyright .text {
-    font-family: 'LittleMiracles';
+    font-family: 'LittleMiracles', cursive;
     line-height: 1;
 }
 
-
-
 /* ================= REUSABLE RESUME SECTIONS ================= */
-
-
-/* Khung bọc cả một phần mục (Section) */
 .info-section {
     margin-top: 35px;
     margin-bottom: 20px;
@@ -482,9 +348,8 @@ footer {
     gap: 12px;
 }
 
-/* Tiêu đề in hoa đậm  */
 .info-section-title {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 1.6rem;
     font-weight: 670;
     color: #444;
@@ -493,7 +358,6 @@ footer {
     text-transform: uppercase;
 }
 
-/* Khối nội dung có đường viền kẻ dọc bên trái */
 .info-item-block {
     border-left: 4px solid rgba(213, 203, 213, 0.35);
     padding-left: 14px;
@@ -502,9 +366,8 @@ footer {
     gap: 4px;
 }
 
-/* Dòng chữ chính  */
 .info-item-main {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: 260;
     font-size: 1.4rem;
     color: #181818;
@@ -512,9 +375,8 @@ footer {
     line-height: 1.3;
 }
 
-/* Dòng chữ phụ in hoa mờ */
 .info-item-sub {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 0.95rem;
     font-weight: 400;
     color: #888;
@@ -522,13 +384,7 @@ footer {
     margin: 0;
 }
 
-
-
-
-
-
-/* ================= ABOUT ================= */
-
+/* ================= ABOUT WINDOW ================= */
 .aboutBox {
     top: 0;
     left: 0;
@@ -549,34 +405,28 @@ footer {
     z-index: 999;
     user-select: none;
     transform-origin: center center;
-
     transform: translate3d(var(--x, 0px), var(--y, 0px), 0) scale(1);
     opacity: 1;
     will-change: transform, opacity;
 }
 
-/* 1. Trạng thái hiển thị */
 .aboutBox.is-visible {
     display: flex;
 }
 
-/* 2. chạy*/
 .aboutBox.is-opening {
     animation: popupLaunch 0.2s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
 }
 
-/* 3. ĐÓNG */
 .aboutBox.is-closing {
     animation: popupDismiss 0.18s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* 4. Khi đang kéo thả */
 .aboutBox.is-dragging {
     animation: none !important;
     transition: none !important;
 }
 
-/* Keyframes Bung mở */
 @keyframes popupLaunch {
     0% {
         opacity: 0;
@@ -589,7 +439,6 @@ footer {
     }
 }
 
-/* Keyframes Thu nhỏ */
 @keyframes popupDismiss {
     0% {
         opacity: 1;
@@ -625,27 +474,14 @@ footer {
     flex: 1;
 }
 
-/* ======= CUSTOM SCROLLBAR ======== */
-.about-content::-webkit-scrollbar {
+/* Custom Scrollbar */
+.about-text::-webkit-scrollbar {
     width: 14px;
 }
 
-.about-content::-webkit-scrollbar-track {
+.about-text::-webkit-scrollbar-track {
     background: rgba(240, 230, 238, 0.5);
     border-radius: 14px;
-}
-
-.about-content::-webkit-scrollbar-thumb {
-    background: rgb(214, 43, 226);
-    border-radius: 14px;
-}
-
-.about-content::-webkit-scrollbar-thumb:hover {
-    background: rgb(160, 20, 175);
-}
-
-.about-text::-webkit-scrollbar {
-    width: 10px;
 }
 
 .about-text::-webkit-scrollbar-thumb {
@@ -657,8 +493,6 @@ footer {
     background: rgb(226, 111, 234);
 }
 
-
-/* 1. Mũi tên TRÊN */
 .about-text::-webkit-scrollbar-button:single-button:vertical:decrement {
     height: 18px;
     width: 14px;
@@ -669,7 +503,6 @@ footer {
     cursor: pointer;
 }
 
-/* 2. Mũi tên DƯỚI  */
 .about-text::-webkit-scrollbar-button:single-button:vertical:increment {
     height: 18px;
     width: 14px;
@@ -685,9 +518,6 @@ footer {
     background-color: rgba(214, 43, 226, 0.15);
     border-radius: 6px;
 }
-
-
-/* text about bebelb */
 
 .about-header {
     display: flex;
@@ -735,7 +565,7 @@ footer {
 }
 
 .about-jp {
-    font-family: 'BlueIsland';
+    font-family: 'BlueIsland', cursive;
     font-size: 1.9rem;
     font-weight: 600;
     color: rgba(190, 35, 201, 0.925);
@@ -769,13 +599,13 @@ footer {
     overflow-x: hidden;
     padding-left: 25px;
     padding-right: 12px;
-    user-select: text;
     -webkit-overflow-scrolling: touch;
-    user-select: none;
+    user-select: text;
+    /* Cho phép bôi đen chọn văn bản */
 }
 
 .about-msg {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: 290;
     font-size: 1.22rem;
     line-height: 1.58;
@@ -783,7 +613,6 @@ footer {
     color: #000000;
 }
 
-/* Danh sách dấu chấm tròn */
 .about-skills-list {
     list-style-type: disc;
     padding-left: 24px;
@@ -794,7 +623,7 @@ footer {
 }
 
 .about-skills-list li {
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: 290;
     font-size: 1.2rem;
     line-height: 1.5;
@@ -810,13 +639,8 @@ footer {
 
 .highlight-txt:hover {
     color: rgb(213, 92, 222);
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 4px;
 }
 
-
-/* đóng */
 #closeAboutBtn,
 .bar-close {
     font-family: 'Wix Madefor Display', sans-serif;
@@ -838,17 +662,6 @@ footer {
     color: #ff3366;
     transform: translateY(2px) scale(1);
 }
-
-
-
-
-
-/* ================= WORK ================= */
-
-
-
-
-
 
 /* ================= NIGHT MODE ================= */
 .nightMode {
@@ -882,12 +695,7 @@ footer {
     transform: scale(0.95);
 }
 
-
-/* ================= BẢNG MÀU DARK MODE ================= */
-
-
-
-/* Tạo lớp nền gradient tối đè lên trên */
+/* ================= DARK MODE STYLES ================= */
 body::before {
     content: '';
     position: fixed;
@@ -903,7 +711,6 @@ body::before {
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Khi bật Dark Mode */
 body.dark-mode::before {
     opacity: 1;
 }
@@ -912,7 +719,6 @@ body.dark-mode .homeBox {
     background-color: #351939ac;
     box-shadow: 0px 6px #4a284e;
 }
-
 
 body.dark-mode .aboutBox {
     background-color: #2b2636;
@@ -929,7 +735,6 @@ body.dark-mode .highlight-txt {
     color: #f09bc7;
 }
 
-
 body.dark-mode .window-content {
     border-right: 2px solid rgb(255, 254, 254);
     border-left: 2px solid rgb(255, 254, 254);
@@ -939,7 +744,6 @@ body.dark-mode .window-content {
 body.dark-mode .window-bar {
     border-color: #ffffff;
 }
-
 
 body.dark-mode .intro-title,
 body.dark-mode .intro-h2,
@@ -965,9 +769,8 @@ body.dark-mode .butifuBtn:hover .btn-text {
     text-shadow: 0 3px 8px rgba(236, 145, 243, 0.3);
 }
 
-
+/* Đã loại bỏ hoàn toàn .aboutBox để tránh đè Animation */
 .homeBox,
-.aboutBox,
 .window-bar,
 .window-content,
 .intro-title,
@@ -996,7 +799,6 @@ body.dark-mode .link:hover {
     color: #d946ef;
 }
 
-
 body.dark-mode .info-section-title {
     color: #f1f5f9;
 }
@@ -1013,17 +815,7 @@ body.dark-mode .info-item-sub {
     color: #94a3b8;
 }
 
-
-/* ================= ABOUT DARK MODE ================= */
-
-/* body.dark-mode .about-avatar {
-    box-shadow: 0 0 10px rgba(217, 70, 239, 0.4);
-} */
-
-body.dark-mode .about-name {
-    color: #f472b6;
-}
-
+body.dark-mode .about-name,
 body.dark-mode .about-jp {
     color: #f472b6;
 }
@@ -1039,10 +831,6 @@ body.dark-mode .about-divider {
 body.dark-mode .about-text p {
     color: #f1f5f9;
 }
-
-/* body.dark-mode .about-text::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-} */
 
 body.dark-mode .about-text::-webkit-scrollbar-thumb {
     background: #f09bc7;
@@ -1060,141 +848,7 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f472b6' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 9 12 16 19 9'/></svg>");
 }
 
-
-/* ================= RESPONSIVE CHO ĐIỆN THOẠI (Dưới 768px) ================= */
-@media (max-width: 768px) {
-
-    /* 1. Nút Night Mode */
-    .nightMode {
-        top: 14px;
-        left: 14px;
-    }
-
-    .Night {
-        width: 36px;
-        height: 36px;
-        font-size: 15px;
-    }
-
-    /* 2. Cân chỉnh khung Home */
-    .home {
-        padding: 0;
-        transform: translateY(0);
-    }
-
-    .homeBox {
-        width: 90vw;
-        height: 72vh;
-        max-height: 580px;
-    }
-
-    .window-bar {
-        height: 44px;
-        padding: 0 14px;
-    }
-
-    .bar-title {
-        font-size: 20px;
-    }
-
-    /* 3. Bố cục nội dung */
-    .window-content {
-        padding: 16px 10px 14px 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        position: relative;
-    }
-
-    /* 4. Cụm chữ */
-    .intro-title {
-        font-size: clamp(3rem, 6.5vw, 4rem) !important;
-        padding-top: 0 !important;
-        margin: auto 0 0 0 !important;
-        line-height: 1.15;
-        letter-spacing: 0.5px;
-        text-align: center;
-        width: 100%;
-    }
-
-    .intro-h2 {
-        font-size: clamp(1rem, 3.8vw, 1.4rem) !important;
-        margin-top: 4px !important;
-        margin-bottom: auto !important;
-        line-height: 1.25;
-        text-align: center;
-        max-width: 250px;
-    }
-
-    /* 5. Hàng 5 nút bấm*/
-    .exploreBtn {
-        margin-top: 0;
-        margin-bottom: 4px;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        gap: 2px !important;
-        flex-wrap: nowrap !important;
-    }
-
-    .butifuBtn {
-        gap: 4px;
-        flex: 1;
-    }
-
-    .btn-img {
-        width: 40px !important;
-        height: 40px !important;
-    }
-
-    .btn-text {
-        font-size: 11px !important;
-    }
-
-    /* 6. Cửa sổ About */
-    .aboutBox {
-        width: 92vw !important;
-        height: 75vh !important;
-    }
-
-    .about-avatar {
-        width: 70px !important;
-        height: 70px !important;
-    }
-
-    .about-name {
-        font-size: 1.8rem !important;
-    }
-
-    .about-sub {
-        font-size: 1rem !important;
-    }
-
-    /* 7. Footer */
-    footer {
-        padding-bottom: 8px;
-    }
-
-    .mediu {
-        gap: 12px;
-    }
-
-    .fa-brands {
-        font-size: 22px !important;
-    }
-
-    .copyright {
-        font-size: 13px !important;
-    }
-}
-
-
-
 /* ================= WAVE & SCROLLING PATTERN ================= */
-
-
 .wave-container {
     position: fixed;
     bottom: 0;
@@ -1207,9 +861,6 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
     overflow: hidden;
 }
 
-
-
-/* --- 1. Dải ảnh --- */
 .water-pattern-track {
     position: absolute;
     bottom: 20px;
@@ -1222,7 +873,6 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
     white-space: nowrap;
 }
 
-/* Dải lặp */
 .pattern-loop {
     display: flex;
     align-items: center;
@@ -1230,58 +880,36 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
     padding-right: 65px;
     flex-shrink: 0;
     min-width: 100%;
-    -webkit-animation: scrollRightToLeft 25s linear infinite;
     animation: scrollRightToLeft 25s linear infinite;
     will-change: transform;
 }
 
-/* kích thước */
 .pattern-loop img {
     width: 200px;
     height: 200px;
     object-fit: contain;
     flex-shrink: 0;
-    -webkit-transition: -webkit-transform 0.2s ease;
     transition: transform 0.2s ease;
 }
 
 .pattern-loop img:nth-child(even) {
-    -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
 }
 
 .pattern-loop img:nth-child(odd) {
-    -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);
-}
-
-/* Chạy trôi  */
-@-webkit-keyframes scrollRightToLeft {
-    0% {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-    }
-
-    100% {
-        -webkit-transform: translate3d(0%, 0, 0);
-        transform: translate3d(0%, 0, 0);
-    }
 }
 
 @keyframes scrollRightToLeft {
     0% {
-        -webkit-transform: translate3d(-100%, 0, 0);
         transform: translate3d(-100%, 0, 0);
     }
 
     100% {
-        -webkit-transform: translate3d(0%, 0, 0);
         transform: translate3d(0%, 0, 0);
     }
 }
 
-
-/* --- 2. Bộ khung sóng nước --- */
 .waves-wrapper {
     position: absolute;
     bottom: 0;
@@ -1293,7 +921,6 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
     justify-content: flex-end;
 }
 
-/* SVG sóng */
 .waves {
     width: 100%;
     height: 40px;
@@ -1308,79 +935,48 @@ body.dark-mode .about-text::-webkit-scrollbar-button:single-button:vertical:incr
             rgb(130, 200, 248) 0%,
             rgba(108, 173, 253, 0.85) 45%,
             rgba(75, 155, 229, 0.98) 100%);
-    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
 
-/* Kích hoạt phần cứng GPU và khử răng cưa trên mobile */
 .wave-layer-1,
 .wave-layer-2,
 .wave-layer-3,
 .wave-layer-4 {
-    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     perspective: 1000px;
     will-change: transform;
 }
 
-/* Màu sắc từng lớp sóng pastel chuyển đổi êm đềm */
 .wave-layer-1 {
     fill: rgba(200, 240, 255, 0.35);
-    -webkit-animation: move-wave-seamless 12s linear infinite;
     animation: move-wave-seamless 12s linear infinite;
 }
 
 .wave-layer-2 {
     fill: rgba(165, 225, 250, 0.45);
-    -webkit-animation: move-wave-seamless 8s linear infinite -2s;
     animation: move-wave-seamless 8s linear infinite -2s;
 }
 
 .wave-layer-3 {
     fill: rgba(140, 210, 248, 0.6);
-    -webkit-animation: move-wave-seamless 6s linear infinite -4s;
     animation: move-wave-seamless 6s linear infinite -4s;
 }
 
 .wave-layer-4 {
     fill: rgb(130, 200, 248);
-    -webkit-animation: move-wave-seamless 4s linear infinite;
     animation: move-wave-seamless 4s linear infinite;
-}
-
-/* Keyframes chạy trôi sóng mượt mà */
-@-webkit-keyframes move-wave-seamless {
-    0% {
-        -webkit-transform: translate3d(-90px, 0, 0);
-        transform: translate3d(-90px, 0, 0);
-    }
-
-    100% {
-        -webkit-transform: translate3d(85px, 0, 0);
-        transform: translate3d(85px, 0, 0);
-    }
 }
 
 @keyframes move-wave-seamless {
     0% {
-        -webkit-transform: translate3d(-90px, 0, 0);
         transform: translate3d(-90px, 0, 0);
     }
 
     100% {
-        -webkit-transform: translate3d(85px, 0, 0);
         transform: translate3d(85px, 0, 0);
     }
 }
-
-
-/* ================= DARK MODE GRADIENT ================= */
-
-/* body.dark-mode {
-     background: linear-gradient(180deg, #18151f 0%, #241a2e 60%, #311b3d 100%); 
-} */
 
 body.dark-mode .wave-layer-1 {
     fill: rgba(232, 121, 249, 0.22);
@@ -1407,4 +1003,135 @@ body.dark-mode .water-body {
 
 body.dark-mode .water-pattern-track {
     opacity: 0.35;
+}
+
+/* ================= RESPONSIVE MOBILE ================= */
+@media (max-width: 768px) {
+    .nightMode {
+        top: 14px;
+        left: 14px;
+    }
+
+    .Night {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+
+    .home {
+        padding: 0;
+        transform: translateY(0);
+    }
+
+    .homeBox {
+        width: 90vw;
+        height: 72vh;
+        max-height: 580px;
+    }
+
+    .window-bar {
+        height: 44px;
+        padding: 0 14px;
+    }
+
+    .bar-title {
+        font-size: 20px;
+    }
+
+    .window-content {
+        padding: 16px 10px 14px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+    }
+
+    .intro-title {
+        font-size: clamp(3rem, 6.5vw, 4rem) !important;
+        padding-top: 0 !important;
+        margin: auto 0 0 0 !important;
+        line-height: 1.15;
+        letter-spacing: 0.5px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .intro-h2 {
+        font-size: clamp(1rem, 3.8vw, 1.4rem) !important;
+        margin-top: 4px !important;
+        margin-bottom: auto !important;
+        line-height: 1.25;
+        text-align: center;
+        max-width: 250px;
+    }
+
+    .exploreBtn {
+        margin-top: 0;
+        margin-bottom: 4px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .butifuBtn {
+        gap: 4px;
+        flex: 1;
+    }
+
+    .btn-img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .btn-text {
+        font-size: 11px !important;
+    }
+
+    .aboutBox {
+        width: 92vw !important;
+        height: 75vh !important;
+    }
+
+    .about-avatar {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .about-name {
+        font-size: 1.8rem !important;
+    }
+
+    .about-sub {
+        font-size: 1rem !important;
+    }
+
+    footer {
+        padding-bottom: 8px;
+    }
+
+    .mediu {
+        gap: 12px;
+    }
+
+    .fa-brands {
+        font-size: 22px !important;
+    }
+
+    .copyright {
+        font-size: 13px !important;
+    }
+
+    .musicPlay {
+        bottom: 14px;
+        right: 14px;
+    }
+
+    .btn-music {
+        width: 38px;
+        height: 38px;
+    }
 }
