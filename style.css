@@ -638,11 +638,10 @@ footer {
 /* ================= CONTACT WINDOW ================= */
 
 #contactWindow {
-
-
     width: min(92vw, 640px) !important;
     height: 90vh !important;
     max-height: 750px;
+    background-color: #f8d6f8;
 }
 
 .contact-content {
@@ -802,7 +801,7 @@ footer {
 .open-askbox-link:hover {
     background: rgb(214, 43, 226);
     color: #ffffff;
-    transform: translateY(-2px);
+    transform: translateY(2px);
     box-shadow: 0 3px 8px rgba(214, 43, 226, 0.3);
 }
 
@@ -869,13 +868,13 @@ footer {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #888888;
+    color: #2f2f2f;
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
 .askbox-back-btn:hover {
-    color: #e622dc;
+    color: #ed48e5;
 }
 
 .askbox-admin-btn:hover {
@@ -883,7 +882,7 @@ footer {
 }
 
 .askbox-form-wrap {
-    background: #fffdf5;
+    background: #fff5fd;
     border: 1.5px solid rgba(34, 9, 34, 0.12);
     border-radius: 12px;
     padding: 16px 18px;
@@ -1066,7 +1065,7 @@ footer {
 }
 
 .qa-card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 10px;
     padding: 14px 16px;
     border: 1.5px solid rgba(34, 9, 34, 0.1);
@@ -1098,7 +1097,7 @@ footer {
 }
 
 .qa-reply-box {
-    background: #fbf5dc;
+    background: #fadcfb;
     border-left: 3px solid rgb(214, 43, 226);
     border-radius: 0 8px 8px 0;
     padding: 8px 12px;
@@ -1238,8 +1237,8 @@ footer {
 
 .retro-cancel-btn {
     padding: 6px 12px;
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
+    background: #f9f1f8;
+    border: 1px solid #e1cbdd;
     border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
@@ -2183,7 +2182,6 @@ body.dark-mode .butifuBtn:hover .btn-text {
     text-shadow: 0 3px 8px rgba(236, 145, 243, 0.3);
 }
 
-
 .homeBox,
 .window-bar,
 .window-content,
@@ -2204,6 +2202,11 @@ footer,
         box-shadow 0.26s ease,
         fill 0.26s ease !important;
 }
+
+body.dark-mode .intro-title span {
+    color: #fa7abe !important;
+}
+
 
 body.dark-mode .link {
     color: #f472b6;
@@ -2361,17 +2364,17 @@ body.dark-mode .link-label {
 }
 
 body.dark-mode .link-card:hover .link-icon {
-    color: #f472b6;
-    filter: drop-shadow(0 8px 16px rgba(244, 114, 182, 0.55));
+    color: #f9f9f9;
+    /* filter: drop-shadow(0 8px 16px rgba(244, 114, 182, 0.55)); */
 }
 
 body.dark-mode .link-card:hover .link-label {
-    color: #f472b6;
+    color: #fdfdfd;
 }
 
 body.dark-mode .links-notice {
     border-color: rgba(255, 255, 255, 0.25);
-    background: rgba(26, 22, 34, 0.6);
+    background: rgba(34, 22, 29, 0.6);
     color: #cbd5e1;
 }
 
@@ -2424,8 +2427,8 @@ body.dark-mode .faq-link:hover {
 
 /* ================= DARK MODE CHO CONTACT & ASK BOX ================= */
 body.dark-mode #contactWindow {
-    background-color: #2b2636;
-    box-shadow: 0px 6px #4a284e;
+    background-color: #651b43;
+    box-shadow: 0px 6px #4e2846;
     border: 2px solid #ffffff;
 }
 
@@ -2435,11 +2438,11 @@ body.dark-mode .contact-heading {
 
 body.dark-mode .contact-desc,
 body.dark-mode .contact-mail-info {
-    color: #e2e8f0;
+    color: #ffffff;
 }
 
 body.dark-mode .contact-note {
-    color: #94a3b8;
+    color: #faf9fa;
 }
 
 body.dark-mode .contact-link {
@@ -2451,29 +2454,29 @@ body.dark-mode .contact-link:hover {
 }
 
 body.dark-mode .contact-btn {
-    background-color: #f472b6;
+    background-color: #ff98cd;
     box-shadow: 0 4px 0 #be185d;
     color: #1a1622 !important;
 }
 
 body.dark-mode .contact-btn:hover {
-    background-color: #f687c1;
+    background-color: #fc7cbe;
     box-shadow: 0 6px 0 #be185d;
 }
 
 body.dark-mode .switch-askbox-wrap span {
-    color: #94a3b8;
+    color: #b894b0;
 }
 
 body.dark-mode .open-askbox-link {
-    background: #2b2438;
-    color: #f472b6;
+    background: #382437;
+    color: #fbb2d8;
     border-color: rgba(244, 114, 182, 0.4);
 }
 
 body.dark-mode .open-askbox-link:hover {
     background: #f472b6;
-    color: #1a1622;
+    color: #22161f;
 }
 
 body.dark-mode .askbox-form-wrap {
@@ -2482,11 +2485,11 @@ body.dark-mode .askbox-form-wrap {
 }
 
 body.dark-mode .askbox-title {
-    color: #f8fafc;
+    color: #fcf8fc;
 }
 
 body.dark-mode .askbox-sub {
-    color: #cbd5e1;
+    color: #fef5fe;
 }
 
 body.dark-mode .retro-input,
@@ -2541,6 +2544,16 @@ body.dark-mode .retro-cancel-btn {
     background: #2d2638;
     color: #e2e8f0;
     border-color: #4b3e5e;
+}
+
+
+body.dark-mode .askbox-back-btn,
+body.dark-mode .askbox-admin-btn {
+    color: #f9f8f8;
+}
+
+body.dark-mode .askbox-back-btn:hover {
+    color: #f9aef5;
 }
 
 
