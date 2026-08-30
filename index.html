@@ -18,24 +18,37 @@
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/f953524533.js" crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
 </head>
 
 <body>
     <main>
+
         <!-- Night mode toggle -->
         <div class="nightMode">
-            <button class="Night" id="nightToggle" title="Chuyển chế độ sáng/tối">
+            <button class="Night" id="nightToggle" title="Switch to dark mode">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
 
+
         <!-- Music player -->
         <div class="musicPlay">
+            <!-- Bong bóng thoại gợi ý (có sẵn chữ) -->
+            <div class="music-bubble" id="musicBubble">
+                💡 reminder: you can drag the windows around by the title bar!
+            </div>
+
             <button class="music" id="musicToggle" title="Phát nhạc">
                 <img src="image/icoc.png" alt="Music" class="btn-music" id="musicImg">
             </button>
             <audio id="bgMusic" src="audio/Nihahaha.mp3" loop preload="auto"></audio>
         </div>
+
 
         <!-- Home Box -->
         <div class="home">
@@ -146,7 +159,8 @@
         </div>
     </main>
 
-    <!-- Cửa sổ About Me -->
+
+    <!-- ================= ABOUT WINDOW ================= -->
     <div class="aboutBox" id="aboutWindow">
 
         <div class="window-bar drag-handle">
@@ -223,6 +237,7 @@
         </div>
     </div>
 
+
     <!-- ================= WORK WINDOW ================= -->
     <div class="aboutBox workBox" id="workWindow">
         <!-- Thanh tiêu đề -->
@@ -266,6 +281,7 @@
                             <span class="skill-tag">Python</span>
                             <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">SQL</span>
                         </div>
                     </div>
                 </div>
@@ -383,18 +399,742 @@
 
     <!--  Khung phóng to -->
     <div class="lightbox-modal" id="imageLightbox">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
         <div class="lightbox-content">
             <img src="" alt="Enlarged Artwork" class="lightbox-img" id="lightboxImg">
             <p class="lightbox-caption" id="lightboxCaption"></p>
         </div>
     </div>
 
-    <div class="linksBox" id="linksWindow"></div>
-    <div class="faqBox" id="faqWindow"></div>
-    <div class="contactBox" id="contactWindow"></div>
 
-    <script src="index.js"></script>
+
+    <!-- ================= LINKS WINDOW ================= -->
+    <div class="aboutBox linksBox" id="linksWindow">
+
+        <!-- Thanh tiêu đề -->
+        <div class="window-bar drag-handle">
+            <span class="bar-title">links</span>
+            <span class="bar-close" id="closeLinksBtn">[x]</span>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="window-content links-content">
+            <div class="links-grid">
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@wamsalijis" target="_blank" rel="noopener noreferrer"
+                    class="link-card">
+                    <i class="fa-brands fa-youtube link-icon"></i>
+                    <span class="link-label">youtube</span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/thienanhuynht/" target="_blank" rel="noopener noreferrer"
+                    class="link-card">
+                    <i class="fa-brands fa-instagram link-icon"></i>
+                    <span class="link-label">instagram</span>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/thienan.huynh.923519/" target="_blank" rel="noopener noreferrer"
+                    class="link-card">
+                    <i class="fa-brands fa-facebook link-icon"></i>
+                    <span class="link-label">facebook</span>
+                </a>
+
+                <!-- X -->
+                <a href="https://x.com/JustinBigCasey" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <i class="fa-brands fa-x-twitter link-icon"></i>
+                    <span class="link-label">twitter</span>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/JustinBigCasey" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <i class="fa-brands fa-github link-icon"></i>
+                    <span class="link-label">github</span>
+                </a>
+
+                <!-- Discord -->
+                <a href="https://discord.gg/9vvsQ7ybHH" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <i class="fa-brands fa-discord link-icon"></i>
+                    <span class="link-label">discord</span>
+                </a>
+
+                <!-- Itch.io -->
+                <a href="https://justincasey.itch.io/" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <i class="fa-brands fa-itch-io link-icon"></i>
+                    <span class="link-label">itch.io</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/justin-casey-1b2a3b1b2/" target="_blank" rel="noopener noreferrer"
+                    class="link-card">
+                    <i class="fa-brands fa-linkedin link-icon"></i>
+                    <span class="link-label">linkedin</span>
+                </a>
+            </div>
+
+            <!-- Khung thông báo nhỏ -->
+            <div class="links-notice">
+                clicking any of the links will open a new tab!
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ================= FAQ WINDOW ================= -->
+    <div class="aboutBox faqBox" id="faqWindow">
+        <!-- Thanh tiêu đề -->
+        <div class="window-bar drag-handle">
+            <span class="bar-title">frequently asked questions</span>
+            <span class="bar-close" id="closeFaqBtn">[x]</span>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="window-content faq-content">
+            <div class="faq-list">
+
+                <!-- Q1: Software -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">what software do you use?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><b>development:</b> <a href="https://code.visualstudio.com/" target="_blank"
+                                        class="faq-link">VS Code</a>, Visual Studio, PyCharm</li>
+                                <li><b>game engine:</b> <a href="https://unity.com/" target="_blank"
+                                        class="faq-link">Unity 2D/3D</a></li>
+                                <li><b>illustration:</b> Krita, Paint</li>
+                                <li>feel free to check the rest of the tools i use in the <b>Works</b> window!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2: Commissions -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">are your commissions open?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><b>commissions:</b> currently closed to focus on university courses.</li>
+                                <li><b>game jams &amp; collabs:</b> always happy to join fun indie projects or
+                                    open-source ideas!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3: Setup -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">what's your setup?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><b>OS:</b> Windows 11 Pro</li>
+                                <li><b>code editor theme:</b> One Dark Pro / Catppuccin Mocha</li>
+                                <li><b>font:</b> JetBrains Mono &amp; Fira Code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4: Sound Effects -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">where do you get your sound effects?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><a href="https://freesound.org/" target="_blank" class="faq-link">freesound.org</a>
+                                    for ambient and background noise</li>
+                                <li>itch.io sound packs &amp; bfxr for 8-bit retro audio</li>
+                                <li>custom audio edited with <b>Audacity</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5: Usage / Copyright -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">can i use your work as my icon/dp/header?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><b>yes:</b> personal, non-commercial use is completely okay as long as you give
+                                    proper credit!</li>
+                                <li><b>no:</b> strictly no reposting for sale or feeding into AI datasets.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6: Inspiration -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">where do you get your inspiration from?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li><b>nature:</b> landscapes, plants, and animals</li>
+                                <li><b>art &amp; design:</b> digital art, vintage posters, and architecture</li>
+                                <li><b>pop culture:</b> movies, games, and anime</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7: Why my name is justin -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">why is your name justin?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li>it's a nickname i got from my friends in high school, and it stuck!</li>
+                                <li>my real name is Huynh Thien An, but i prefer to go by Justin Casey online.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CONTACT ================= -->
+
+    <div class="aboutBox contactBox" id="contactWindow">
+
+        <!-- Thanh tiêu đề -->
+        <div class="window-bar drag-handle">
+            <span class="bar-title">contact</span>
+            <span class="bar-close" id="closeContactBtn">[x]</span>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="window-content contact-content">
+
+            <!-- EMAIL -->
+            <div class="contact-tab active" id="tabEmailView">
+                <div class="contact-inner">
+                    <h3 class="contact-heading">yayyy mail!</h3>
+                    <p class="contact-desc">
+                        you can contact me through email! i don't usually check my social media messages, so please
+                        direct questions to my email instead 🤤
+                    </p>
+                    <div class="contact-chibi-wrap">
+                        <img src="image/icoc.png" alt="Contact Mail" class="contact-chibi-img">
+                    </div>
+                    <div class="contact-action-area">
+                        <p class="contact-mail-info">
+                            email me at: <a href="mailto:justinbigcasey@gmail.com"
+                                class="contact-link">justinbigcasey@gmail.com</a>
+                        </p>
+                        <p class="contact-note">or press the button below to open your mail app.</p>
+
+                        <a href="mailto:justinbigcasey@gmail.com" class="contact-btn">send me an email!</a>
+
+                        <div class="switch-askbox-wrap">
+                            <span>or want to leave an anonymous note?</span>
+                            <button class="open-askbox-link" id="openAskBoxBtn">open ask box</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASK BOX -->
+            <div class="contact-tab" id="tabAskBoxView">
+
+                <!-- Thanh công cụ bên trong Ask Box -->
+                <div class="askbox-header-bar">
+                    <button class="askbox-back-btn" id="backToEmailBtn">
+                        < back to mail</button>
+                            <button class="askbox-admin-btn" id="adminLoginBtn">🔒 admin</button>
+                </div>
+
+                <!-- Form gửi tin nhắn -->
+                <div class="askbox-form-wrap">
+                    <h4 class="askbox-title">send me a message or question</h4>
+                    <p class="askbox-sub">feel free to ask anything, leave a cute note or feedback!</p>
+
+                    <div class="askbox-input-group">
+
+                        <input type="text" id="msgSender"
+                            placeholder="your nickname (leave blank if you're a little shy)" class="retro-input"
+                            maxlength="40">
+
+                        <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;">
+                            <input type="text" id="botTrapField" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <textarea id="msgContent" placeholder="type your message here..." class="retro-textarea"
+                            rows="3" maxlength="600" required></textarea>
+
+                    </div>
+
+                    <div class="askbox-form-footer">
+                        <span class="msg-status" id="sendMsgStatus"></span>
+                        <button class="retro-send-btn" id="sendMsgBtn">send message 🚀</button>
+                    </div>
+                </div>
+
+                <hr class="about-divider">
+
+                <!-- Bảng quản trị Admin (Mặc định ẩn) -->
+                <div class="admin-panel" id="adminPanel" style="display: none;">
+                    <div class="admin-panel-header">
+                        <h4>📬 PENDING INBOX (<span id="pendingCount">0</span>)</h4>
+                        <button class="admin-close-btn" id="adminLogoutBtn">lock / logout</button>
+                    </div>
+                    <div class="admin-inbox-list" id="adminInboxList"></div>
+                </div>
+
+                <!-- Danh sách câu hỏi đã được duyệt & trả lời -->
+                <div class="public-qa-section">
+                    <h4 class="skill-group-title">PUBLIC REPLIES 💬</h4>
+                    <div class="public-qa-list" id="publicQaList">
+                        <div class="qa-placeholder">no answered questions yet, be the first to ask! :)</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MODAL ĐĂNG NHẬP ADMIN 3 LỚP -->
+        <div class="admin-auth-modal" id="adminAuthModal" style="display: none;">
+            <div class="admin-auth-card">
+                <div class="admin-auth-header">
+                    <span>🔒 ADMIN VERIFICATION</span>
+                    <button class="modal-close-btn" id="closeAdminModalBtn">[x]</button>
+                </div>
+                <div class="admin-auth-body">
+                    <p class="admin-auth-tip">requires 3-factor authentication to access.</p>
+
+                    <div class="auth-input-group">
+                        <label>1. Gmail Admin:</label>
+                        <input type="email" id="authEmailInput" placeholder="your-email@gmail.com" class="retro-input"
+                            autocomplete="off">
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label>2. Password:</label>
+                        <input type="password" id="authPassInput" placeholder="••••••••" class="retro-input"
+                            autocomplete="off">
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label>3. Secret PIN:</label>
+                        <input type="password" id="authPinInput" placeholder="enter secret pin" class="retro-input"
+                            maxlength="12" autocomplete="off">
+                    </div>
+
+                    <div class="admin-auth-footer">
+                        <span class="auth-err-msg" id="authErrMsg"></span>
+                        <div class="auth-btn-row">
+                            <button class="retro-cancel-btn" id="cancelAdminModalBtn">Cancel</button>
+                            <button class="retro-send-btn" id="submitAdminLoginBtn">Verify &amp; Unlock 🔓</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= Firebase Scripts ================== -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            doc,
+            updateDoc,
+            deleteDoc,
+            onSnapshot,
+            query,
+            where
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+        // 1. Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAr1j7bqfwA7Dw4vudH1mmx1AJVMDUcKjE",
+            authDomain: "justin-casey.firebaseapp.com",
+            projectId: "justin-casey",
+            storageBucket: "justin-casey.firebasestorage.app",
+            messagingSenderId: "888579988879",
+            appId: "1:888579988879:web:d47606c71614d1ad2a3ffa",
+            measurementId: "G-KPVCQE9SP9"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const ADMIN_PIN = "21102007";
+
+        // DOM Elements
+        const openAskBoxBtn = document.getElementById('openAskBoxBtn');
+        const backToEmailBtn = document.getElementById('backToEmailBtn');
+        const tabEmailView = document.getElementById('tabEmailView');
+        const tabAskBoxView = document.getElementById('tabAskBoxView');
+
+        const sendMsgBtn = document.getElementById('sendMsgBtn');
+        const sendMsgStatus = document.getElementById('sendMsgStatus');
+
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        const adminInboxList = document.getElementById('adminInboxList');
+        const pendingCount = document.getElementById('pendingCount');
+        const publicQaList = document.getElementById('publicQaList');
+
+        // Modal Đăng nhập Admin
+        const adminAuthModal = document.getElementById('adminAuthModal');
+        const authEmailInput = document.getElementById('authEmailInput');
+        const authPassInput = document.getElementById('authPassInput');
+        const authPinInput = document.getElementById('authPinInput');
+        const authErrMsg = document.getElementById('authErrMsg');
+        const submitAdminLoginBtn = document.getElementById('submitAdminLoginBtn');
+        const closeAdminModalBtn = document.getElementById('closeAdminModalBtn');
+        const cancelAdminModalBtn = document.getElementById('cancelAdminModalBtn');
+
+        let isAdmin = false;
+        let allMessages = [];
+        let unsubscribeCurrent = null;
+        let isSendingMessage = false;
+
+        // ================= 1. CHUYỂN ĐỔI TAB =================
+        function showAskBox() {
+            tabEmailView?.classList.remove('active');
+            tabAskBoxView?.classList.add('active');
+        }
+
+        function showEmail() {
+            tabAskBoxView?.classList.remove('active');
+            tabEmailView?.classList.add('active');
+        }
+
+        if (openAskBoxBtn) openAskBoxBtn.onclick = showAskBox;
+        if (backToEmailBtn) backToEmailBtn.onclick = showEmail;
+
+        // ================= 2. GỬI TIN NHẮN (CHỐNG SPAM & TRÙNG LẶP) =================
+        const SPAM_COOLDOWN_SECONDS = 45;
+
+        async function handleSendMessage(e) {
+            if (e) e.preventDefault();
+            if (isSendingMessage) return;
+
+            const botTrap = document.getElementById('botTrapField')?.value;
+            if (botTrap) {
+                showStatus('sent successfully! ✨', '#10b981');
+                return;
+            }
+
+            const msgSenderInput = document.getElementById('msgSender');
+            const msgContentInput = document.getElementById('msgContent');
+
+            const text = msgContentInput ? msgContentInput.value.trim() : '';
+            const sender = (msgSenderInput ? msgSenderInput.value.trim() : '') || 'anonymous';
+
+            if (!text) {
+                showStatus('⚠️ please write something before sending!', '#ef4444');
+                msgContentInput?.focus();
+                return;
+            }
+
+            if (text.length < 3 || text.length > 600) {
+                showStatus('⚠️ message must be between 3 and 600 characters!', '#ef4444');
+                return;
+            }
+
+            const lastSentTime = localStorage.getItem('last_msg_sent_time');
+            const now = Date.now();
+            if (lastSentTime) {
+                const diffSeconds = Math.floor((now - parseInt(lastSentTime, 10)) / 1000);
+                if (diffSeconds < SPAM_COOLDOWN_SECONDS) {
+                    showStatus(`⏳ please wait ${SPAM_COOLDOWN_SECONDS - diffSeconds}s before sending another message!`, '#f59e0b');
+                    return;
+                }
+            }
+
+            const lastSentContent = localStorage.getItem('last_msg_sent_content');
+            if (lastSentContent && lastSentContent.toLowerCase() === text.toLowerCase()) {
+                showStatus('⚠️ you have already sent this message!', '#ef4444');
+                return;
+            }
+
+            isSendingMessage = true;
+            if (sendMsgBtn) {
+                sendMsgBtn.disabled = true;
+                sendMsgBtn.textContent = 'sending...';
+            }
+
+            try {
+                await addDoc(collection(db, 'messages'), {
+                    sender: sender,
+                    content: text,
+                    createdAt: Date.now(),
+                    status: 'pending',
+                    reply: ''
+                });
+
+                localStorage.setItem('last_msg_sent_time', Date.now().toString());
+                localStorage.setItem('last_msg_sent_content', text);
+
+                showStatus('sent successfully! ✨', '#10b981');
+                if (msgSenderInput) msgSenderInput.value = '';
+                if (msgContentInput) msgContentInput.value = '';
+            } catch (err) {
+                console.error("Firebase AddDoc Error:", err);
+                showStatus('❌ Failed to send message!', '#ef4444');
+            } finally {
+                isSendingMessage = false;
+                if (sendMsgBtn) {
+                    sendMsgBtn.disabled = false;
+                    sendMsgBtn.textContent = 'send message 🚀';
+                }
+            }
+        }
+
+        function showStatus(text, color) {
+            if (!sendMsgStatus) return;
+            sendMsgStatus.textContent = text;
+            sendMsgStatus.style.color = color;
+            setTimeout(() => {
+                if (sendMsgStatus.textContent === text) sendMsgStatus.textContent = '';
+            }, 4500);
+        }
+
+        if (sendMsgBtn) sendMsgBtn.onclick = handleSendMessage;
+
+        // ================= 3. LẮNG NGHE DỮ LIỆU REALTIME =================
+        function setupRealtimeListener(userIsAdmin) {
+            if (unsubscribeCurrent) {
+                unsubscribeCurrent();
+            }
+
+            const q = userIsAdmin
+                ? collection(db, 'messages')
+                : query(collection(db, 'messages'), where('status', '==', 'approved'));
+
+            unsubscribeCurrent = onSnapshot(q, (snapshot) => {
+                allMessages = [];
+                snapshot.forEach((docSnap) => {
+                    allMessages.push({ id: docSnap.id, ...docSnap.data() });
+                });
+
+                allMessages.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+                renderPublicFeed();
+                if (userIsAdmin) renderAdminInbox();
+            }, (error) => {
+                console.error("Firestore Listen Error:", error);
+            });
+        }
+
+        // Hiển thị tin nhắn công khai
+        function renderPublicFeed() {
+            if (!publicQaList) return;
+            const approved = allMessages.filter(m => m.status === 'approved');
+
+            if (approved.length === 0) {
+                publicQaList.innerHTML = `<div class="qa-placeholder">no answered questions yet, be the first to ask! :) </div>`;
+                return;
+            }
+
+            publicQaList.innerHTML = approved.map(m => `
+            <div class="qa-card" data-id="${m.id}">
+                <div class="qa-question-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span class="qa-sender-tag" style="margin-bottom: 0;">from: ${escapeHtml(m.sender)}</span>
+                        ${isAdmin ? `<button class="admin-public-del-btn" onclick="window.deleteMessage('${m.id}')">🗑️ delete</button>` : ''}
+                    </div>
+                    <p class="qa-question-text">${escapeHtml(m.content)}</p>
+                </div>
+                <div class="qa-reply-box">
+                    <div class="qa-reply-author">Justin Casey ✦</div>
+                    <p class="qa-reply-text">${escapeHtml(m.reply)}</p>
+                </div>
+            </div>
+        `).join('');
+        }
+
+        // ================= 4. XÁC THỰC ADMIN 3 LỚP =================
+        function openAuthModal() {
+            if (auth.currentUser && isAdmin) {
+                if (adminPanel) adminPanel.style.display = 'block';
+                renderAdminInbox();
+                return;
+            }
+            if (authErrMsg) authErrMsg.textContent = '';
+            if (authEmailInput) authEmailInput.value = '';
+            if (authPassInput) authPassInput.value = '';
+            if (authPinInput) authPinInput.value = '';
+            if (adminAuthModal) adminAuthModal.style.display = 'flex';
+        }
+
+        function closeAuthModal() {
+            if (adminAuthModal) adminAuthModal.style.display = 'none';
+        }
+
+        if (adminLoginBtn) adminLoginBtn.onclick = openAuthModal;
+        if (closeAdminModalBtn) closeAdminModalBtn.onclick = closeAuthModal;
+        if (cancelAdminModalBtn) cancelAdminModalBtn.onclick = closeAuthModal;
+
+        if (submitAdminLoginBtn) {
+            submitAdminLoginBtn.onclick = async () => {
+                const email = authEmailInput ? authEmailInput.value.trim() : '';
+                const pass = authPassInput ? authPassInput.value.trim() : '';
+                const pin = authPinInput ? authPinInput.value.trim() : '';
+
+                if (!email || !pass || !pin) {
+                    if (authErrMsg) authErrMsg.textContent = '⚠️ Please fill in all 3 fields!';
+                    return;
+                }
+
+                submitAdminLoginBtn.disabled = true;
+                submitAdminLoginBtn.textContent = 'Verifying...';
+
+                if (pin !== ADMIN_PIN) {
+                    if (authErrMsg) authErrMsg.textContent = '❌ Invalid PIN code!';
+                    submitAdminLoginBtn.disabled = false;
+                    submitAdminLoginBtn.textContent = 'Verify & Unlock 🔓';
+                    return;
+                }
+
+                try {
+                    await signInWithEmailAndPassword(auth, email, pass);
+                    isAdmin = true;
+                    closeAuthModal();
+                    if (adminPanel) adminPanel.style.display = 'block';
+                    renderPublicFeed();
+                    alert('Admin verified! 🔓');
+                } catch (error) {
+                    console.error(error);
+                    if (authErrMsg) authErrMsg.textContent = '❌ Wrong Gmail or Password!';
+                }
+
+                submitAdminLoginBtn.disabled = false;
+                submitAdminLoginBtn.textContent = 'Verify & Unlock 🔓';
+            };
+        }
+
+        if (adminLogoutBtn) {
+            adminLogoutBtn.onclick = async () => {
+                await signOut(auth);
+                isAdmin = false;
+                if (adminPanel) adminPanel.style.display = 'none';
+                renderPublicFeed();
+                alert('Admin logged out! 🔒');
+            };
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            isAdmin = !!user;
+            if (adminPanel) {
+                adminPanel.style.display = isAdmin ? 'block' : 'none';
+            }
+            renderPublicFeed();
+            setupRealtimeListener(isAdmin);
+        });
+
+        // ================= 5. HÀM DUYỆT & XÓA TIN NHẮN =================
+        function renderAdminInbox() {
+            if (!adminInboxList) return;
+            const pending = allMessages.filter(m => m.status === 'pending');
+
+            if (pendingCount) pendingCount.textContent = pending.length;
+
+            if (pending.length === 0) {
+                adminInboxList.innerHTML = `<p style="font-size:0.85rem; color:#888; margin:0;">Inbox is empty!</p>`;
+                return;
+            }
+
+            adminInboxList.innerHTML = pending.map(m => `
+            <div class="admin-card" data-id="${m.id}">
+                <small><b>From:</b> ${escapeHtml(m.sender)}</small>
+                <p class="admin-card-msg">"${escapeHtml(m.content)}"</p>
+                <input type="text" placeholder="Write your reply here..." class="admin-reply-input" id="reply_${m.id}">
+                <div class="admin-card-actions">
+                    <button class="btn-delete" onclick="window.deleteMessage('${m.id}')">Delete</button>
+                    <button class="btn-approve" onclick="window.approveMessage('${m.id}')">Approve &amp; Reply</button>
+                </div>
+            </div>
+        `).join('');
+        }
+
+        // Gán trực tiếp vào window để HTML onclick gọi được từ mọi nơi
+        window.approveMessage = async function (id) {
+            const replyInput = document.getElementById(`reply_${id}`);
+            const replyText = replyInput ? replyInput.value.trim() : '';
+
+            if (!replyText) {
+                alert('Please write a reply before approving!');
+                return;
+            }
+
+            try {
+                await updateDoc(doc(db, 'messages', id), {
+                    status: 'approved',
+                    reply: replyText
+                });
+            } catch (err) {
+                console.error(err);
+                alert('Failed to approve message!');
+            }
+        };
+
+        window.deleteMessage = async function (id) {
+            if (!confirm('Are you sure you want to delete this message?')) return;
+
+            try {
+                await deleteDoc(doc(db, 'messages', id));
+            } catch (err) {
+                console.error(err);
+                alert('Failed to delete message!');
+            }
+        };
+
+        function escapeHtml(str) {
+            return (str || '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[m]));
+        }
+
+        // Khởi động lắng nghe
+        setupRealtimeListener(false);
+    </script>
+
+    <script src=" index.js"></script>
 </body>
 
 </html>
