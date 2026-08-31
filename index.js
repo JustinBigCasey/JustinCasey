@@ -626,7 +626,7 @@ function escapeHtml(str) {
 
 // ================= POPUP =================
 const hintsList = [
-    "you can drag the windows around by the title bar! ^.^", ,
+    "you can drag the windows around by the title bar! ^.^",
     "click on me to toggle the background music ~ (๑ᵕᴗᵕ๑)",
     "feel free to drop a message in the ask box in contact! (｡•̀ᴗ-)✧",
     "try the night mode on the top-left corner if you feel kinda eepy! (˘ω˘)",
