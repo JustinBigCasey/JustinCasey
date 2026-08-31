@@ -82,14 +82,22 @@ main {
 
 
 
+/* ================= 1. KHUNG HOME & CONTAINER ================= */
+.home {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0 40px 0;
+    position: relative;
+    z-index: 2;
+}
 
-
-/* ================= EASTER EGG ================= */
+/* Container bắt buộc phải có position: relative để làm mốc tọa độ */
 .home-container {
     position: relative;
-    /* Làm mốc tọa độ cố định cho mascot */
     width: min(90vw, 850px);
-    /* Khớp chính xác chiều rộng với homeBox */
     display: flex;
     justify-content: center;
 }
@@ -98,7 +106,6 @@ main {
     background-color: rgb(255, 255, 255);
     border-radius: 8px;
     width: 100%;
-    /* Chiếm 100% độ rộng của home-container */
     height: min(65vh, 550px);
     overflow: hidden;
     display: flex;
@@ -106,19 +113,17 @@ main {
     box-shadow: 0px 6px rgb(242, 204, 211);
 }
 
-
-/* ================= MASCOT ================= */
+/* ================= 2. MASCOT TRÊN NÓC CỬA SỔ ================= */
 .home-pet-wrapper {
     position: absolute;
     bottom: calc(100% - -40px);
-    left: 20px;
-    z-index: 10;
+    left: 15px;
+    z-index: 20;
     cursor: pointer;
     user-select: none;
-    width: 62px;
-    height: 62px;
+    width: 58px;
+    height: 58px;
 }
-
 
 .pet-avatar {
     width: 100px !important;
@@ -127,7 +132,7 @@ main {
     max-height: 100px !important;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
     animation: petGentleHop 2.8s ease-in-out infinite;
     transform-origin: bottom center;
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -141,7 +146,7 @@ main {
     }
 
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-6px);
     }
 }
 
@@ -155,41 +160,46 @@ main {
     }
 
     100% {
-        transform: translateY(-12px) scale(1.15) rotate(6deg);
+        transform: translateY(-10px) scale(1.15) rotate(6deg);
     }
 }
 
-/* Popup bong bóng thoại */
+/* ================= 3. BONG BÓNG THOẠI ================= */
 .pet-bubble {
     position: absolute;
-    bottom: calc(100% + 8px);
+    bottom: 100%;
     left: 0;
-    white-space: nowrap;
+    margin-bottom: 8px;
+    width: max-content;
+    max-width: min(75vw, 280px);
+    white-space: normal;
+    line-height: 1.35;
     background: #ffffff;
     color: #333333;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 7px 14px;
+    padding: 6px 12px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(34, 9, 34, 0.12);
-    border: 2px solid #fadcfb;
+    box-shadow: 0 4px 4px rgba(34, 9, 34, 0.12);
+    border: 2px solid #f4ebf5;
     pointer-events: none;
     opacity: 0;
-    transform: translateY(8px) scale(0.9);
+    transform: translateY(6px) scale(0.9);
     transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9999;
 }
 
 .pet-bubble::after {
     content: '';
     position: absolute;
     bottom: -6px;
-    left: 20px;
+    left: 18px;
     width: 10px;
     height: 10px;
     background: #ffffff;
-    border-right: 2px solid #fadcfb;
-    border-bottom: 2px solid #fadcfb;
+    border-right: 2px solid #f4ebf5;
+    border-bottom: 2px solid #f4ebf5;
     transform: rotate(45deg);
 }
 
@@ -199,22 +209,22 @@ main {
     transform: translateY(0) scale(1);
 }
 
-/* Hiệu ứng xoay vòng Easter Egg */
+/* Easter egg spin */
 .pet-easter-egg {
     animation: petSpinCrazy 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite !important;
 }
 
 @keyframes petSpinCrazy {
     0% {
-        transform: rotate(0deg) scale(1.2);
+        transform: rotate(0deg) scale(1.15);
     }
 
     50% {
-        transform: rotate(180deg) scale(1.45);
+        transform: rotate(180deg) scale(1.35);
     }
 
     100% {
-        transform: rotate(360deg) scale(1.2);
+        transform: rotate(360deg) scale(1.15);
     }
 }
 
@@ -230,6 +240,30 @@ body.dark-mode .pet-bubble::after {
     background: #2b1055;
     border-right-color: #86198f;
     border-bottom-color: #86198f;
+}
+
+/* ================= 4. TỐI ƯU CHO ĐIỆN THOẠI ================= */
+@media (max-width: 768px) {
+    .home {
+        padding: 65px 0 20px 0;
+    }
+
+    .home-pet-wrapper {
+        bottom: calc(100% - 6px);
+        left: 8px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .pet-avatar {
+        width: 46px !important;
+        height: 46px !important;
+    }
+
+    .pet-bubble {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
 }
 
 
