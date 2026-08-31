@@ -54,31 +54,34 @@ const hoverSounds = [
     new Audio('audio/hover3.mp3'),
     new Audio('audio/hover4.mp3'),
     new Audio('audio/hover5.mp3'),
-    new Audio('audio/hover6.mp3'),
+    new Audio('audio/hover6.mp3')
 ];
 
-// Chỉnh âm lượng dịu nhẹ khi lướt chuột
+// Chỉnh âm lượng
 hoverSounds.forEach(sound => sound.volume = 0.25);
 
+// THÊM DÒNG NÀY: Khai báo biến đếm để không bị lỗi ReferenceError
+let currentHoverIndex = 0;
 
 function playCyclingHoverSound() {
-    const randomIndex = Math.floor(Math.random() * hoverSounds.length);
-    const sound = hoverSounds[randomIndex];
+    if (typeof isMuted !== 'undefined' && isMuted) return;
+
+    // Lấy âm thanh theo thứ tự xoay vòng (1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 1...)
+    const sound = hoverSounds[currentHoverIndex];
+    currentHoverIndex = (currentHoverIndex + 1) % hoverSounds.length;
+
     sound.currentTime = 0;
     sound.play().catch(() => { });
 }
 
-
-
-// Gán sự kiện rê chuột (mouseenter) cho tất cả các thẻ skill
+// Gán sự kiện cho các thẻ skill
 document.addEventListener('DOMContentLoaded', () => {
     const skillTags = document.querySelectorAll('.skill-tag');
-
     skillTags.forEach(tag => {
         tag.addEventListener('mouseenter', playCyclingHoverSound);
+        tag.addEventListener('touchstart', playCyclingHoverSound, { passive: true });
     });
 });
-
 
 
 

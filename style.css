@@ -708,21 +708,35 @@ footer {
 /* ================= FAQ WINDOW ================= */
 
 #faqWindow {
+    flex-direction: column !important;
     width: min(92vw, 760px) !important;
     height: 75vh !important;
     max-height: 680px;
     box-sizing: border-box;
+    overflow: hidden !important;
+}
+
+#faqWindow.show,
+#faqWindow.active,
+#faqWindow.is-open {
+    display: flex !important;
 }
 
 .faq-content {
-    flex: 1;
+    flex: 1 1 auto;
     min-height: 0;
     width: 100%;
     box-sizing: border-box;
+
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    padding: 16px 14px 20px 14px;
+    touch-action: pan-y !important;
     -webkit-overflow-scrolling: touch;
+
+    padding: 16px 14px 20px 14px;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgb(214, 43, 226) rgba(240, 230, 238, 0.5);
 }
 
 .faq-list {
@@ -872,19 +886,23 @@ footer {
 
 #contactWindow {
     width: min(92vw, 640px) !important;
-    height: 90vh !important;
-    max-height: 750px;
+    height: 85vh !important;
+    max-height: 720px;
     background-color: #f8d6f8;
+    overflow: hidden !important;
+    box-sizing: border-box;
 }
 
 .contact-content {
-    flex: 1;
+    display: block !important;
+    width: 100% !important;
+    height: calc(100% - 50px) !important;
     overflow-y: auto !important;
-    overflow-x: hidden;
-    padding: 20px 10px 20px 10px !important;
-    -webkit-overflow-scrolling: touch;
-    width: 100%;
-    box-sizing: border-box;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    padding: 20px 14px 28px 14px !important;
+    box-sizing: border-box !important;
 }
 
 .contact-inner {
@@ -894,6 +912,8 @@ footer {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .contact-heading {
@@ -1615,28 +1635,40 @@ footer {
 /* ================= WORK WINDOW ================= */
 
 .workBox {
-    width: min(120vw, 1000px) !important;
-    height: 70vh !important;
-    max-height: 600px;
+    width: min(94vw, 950px) !important;
+    height: 75vh !important;
+    max-height: 650px;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+}
 
+.workBox.active,
+.workBox.show,
+.workBox.is-open {
+    display: flex !important;
 }
 
 .work-content {
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
+    padding: 0 !important;
     overflow: hidden;
     flex: 1;
+    min-height: 0;
+    width: 100%;
 }
 
 .work-text {
     flex: 1;
+    min-height: 0;
     width: 100%;
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 10px 18px 20px 18px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 20px 24px 30px 24px;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     user-select: none;
 }
 
@@ -3142,9 +3174,24 @@ body.dark-mode .water-pattern-track {
         height: 82vh !important;
     }
 
+    .workBox {
+        width: 94vw !important;
+        height: 82vh !important;
+        max-height: 620px !important;
+    }
+
+    .work-text {
+        padding: 14px 12px 24px 12px !important;
+    }
+
+    /* Đổi sang 1 cột trên màn hình nhỏ */
     .skills-wrapper {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .skill-group-title {
+        font-size: 1.15rem !important;
     }
 
     .skill-tag {
@@ -3153,17 +3200,34 @@ body.dark-mode .water-pattern-track {
     }
 
     .project-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: left;
-        gap: 14px;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
     }
 
     .project-img {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
-        aspect-ratio: 16/10;
+        width: 100% !important;
+        max-width: 300px !important;
+        height: auto !important;
+        aspect-ratio: 16 / 10;
+    }
+
+    .project-info {
+        width: 100% !important;
+        text-align: left;
+    }
+
+    .project-title {
+        font-size: 1.15rem !important;
+    }
+
+    .project-desc {
+        font-size: 0.88rem !important;
+    }
+
+    .project-btn-wrap {
+        width: 100% !important;
+        justify-content: flex-start !important;
     }
 
     .project-btn-wrap {
@@ -3171,9 +3235,10 @@ body.dark-mode .water-pattern-track {
         justify-content: center;
     }
 
+    /* Gallery 2 cột */
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 11px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
     }
 
     .gallery-item {
@@ -3236,12 +3301,20 @@ body.dark-mode .water-pattern-track {
 
     #faqWindow {
         width: 92vw !important;
-        height: 80vh !important;
+        height: 75vh !important;
+        max-height: 600px !important;
         overflow: hidden !important;
     }
 
     .faq-content {
-        padding: 14px 10px 18px 10px !important;
+        display: block !important;
+        height: calc(100% - 44px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        padding: 14px 10px 24px 10px !important;
+        box-sizing: border-box !important;
     }
 
     .faq-q-text {
@@ -3257,13 +3330,21 @@ body.dark-mode .water-pattern-track {
     }
 
     #contactWindow {
-        width: 94vw !important;
-        height: 82vh !important;
-        max-height: none;
+        width: 92vw !important;
+        height: 80vh !important;
+        max-height: 620px !important;
+        overflow: hidden !important;
     }
 
     .contact-content {
-        padding: 18px 14px 22px 14px;
+        display: block !important;
+        height: calc(100% - 44px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        padding: 16px 12px 24px 12px !important;
+        box-sizing: border-box !important;
     }
 
     .contact-heading {
@@ -3279,7 +3360,7 @@ body.dark-mode .water-pattern-track {
     }
 
     .contact-chibi-img {
-        max-width: 180px;
+        max-width: 160px !important;
     }
 
     .contact-mail-info {
@@ -3305,7 +3386,9 @@ body.dark-mode .water-pattern-track {
     }
 
     .askbox-form-wrap {
-        padding: 14px 14px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px 12px !important;
     }
 
     .askbox-title {
@@ -3319,7 +3402,6 @@ body.dark-mode .water-pattern-track {
     .retro-input,
     .retro-textarea {
         font-size: 16px;
-        padding: 9px 10px;
     }
 
     .retro-send-btn {
@@ -3359,14 +3441,24 @@ body.dark-mode .water-pattern-track {
     }
 
     .home-pet-wrapper {
-        top: auto;
-        bottom: 85px;
-        left: 16px;
+        top: auto !important;
+        bottom: calc(100% - 8px) !important;
+        left: 10px !important;
+        width: 46px !important;
+        height: 46px !important;
     }
 
     .pet-avatar {
-        width: 48px;
-        height: 48px;
+        width: 46px !important;
+        height: 46px !important;
+        max-width: 46px !important;
+        max-height: 46px !important;
+    }
+
+    .pet-bubble {
+        font-size: 0.75rem !important;
+        padding: 5px 10px !important;
+        max-width: 220px !important;
     }
 }
 
@@ -3414,8 +3506,10 @@ body.dark-mode .water-pattern-track {
     #workWindow,
     #faqWindow,
     #contactWindow {
-        width: 96vw !important;
-        height: 86vh !important;
+        width: 95vw !important;
+        height: 84vh !important;
+        max-height: none !important;
+        overflow: hidden !important;
     }
 
     .about-avatar {
@@ -3445,7 +3539,13 @@ body.dark-mode .water-pattern-track {
     }
 
     .faq-content {
-        padding: 14px 10px 18px 10px !important;
+        display: block !important;
+        height: calc(100% - 38px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        padding: 12px 8px 20px 8px !important;
     }
 
     .faq-q-text {
@@ -3453,7 +3553,13 @@ body.dark-mode .water-pattern-track {
     }
 
     .contact-content {
-        padding: 14px 10px 18px 10px !important;
+        display: block !important;
+        height: calc(100% - 38px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        padding: 14px 10px 24px 10px !important;
     }
 
     .contact-heading {
@@ -3465,7 +3571,7 @@ body.dark-mode .water-pattern-track {
     }
 
     .contact-chibi-img {
-        max-width: 145px !important;
+        max-width: 130px !important;
     }
 
     .contact-mail-info {
