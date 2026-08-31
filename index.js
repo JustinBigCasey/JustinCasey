@@ -815,151 +815,161 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 // ================= MUSIC & NIGHT MODE LOGIC =================
-const musicBtn = document.getElementById('musicToggle');
-const musicImg = document.getElementById('musicImg');
-const bgMusic = document.getElementById('bgMusic');
+document.addEventListener('DOMContentLoaded', () => {
+    const musicBtn = document.getElementById('musicToggle');
+    const musicImg = document.getElementById('musicImg');
+    const bgMusic = document.getElementById('bgMusic');
 
-const nightBtn = document.getElementById('nightToggle');
-const nightIcon = nightBtn ? nightBtn.querySelector('i') : null;
+    const nightBtn = document.getElementById('nightToggle');
+    const nightIcon = nightBtn ? nightBtn.querySelector('i') : null;
 
-// 1. DANH SÁCH BÀI HÁT 
-const playlist = [
-    'audio/Laufey1.mp3',
-    'audio/Laufey2.mp3',
-    'audio/Laufey3.mp3',
-    'audio/Laufey4.mp3'
-];
+    // 1. DANH SÁCH BÀI HÁT 
+    const playlist = [
+        'audio/Laufey1.mp3',
+        'audio/Laufey2.mp3',
+        'audio/Laufey3.mp3',
+        'audio/Laufey4.mp3'
+    ];
 
-playlist.volume = 0.3;
+    const MUSIC_VOLUME = 0.08;
 
-let currentTrackIndex = -1;
-
-// Hàm lấy ngẫu nhiên
-function pickRandomTrack() {
-    if (playlist.length <= 1) return playlist[0];
-
-    let randomIndex;
-    do {
-        randomIndex = Math.floor(Math.random() * playlist.length);
-    } while (randomIndex === currentTrackIndex);
-
-    currentTrackIndex = randomIndex;
-    return playlist[currentTrackIndex];
-}
-
-// Danh sách frame 
-const framesLight = [
-    'image/icoc.png',
-    'image/icoc.png',
-    'image/icoc.png'
-];
-
-const framesDark = [
-    'image/icoc.png',
-    'image/icoc.png',
-    'image/icoc.png'
-];
-
-// Preload ảnh
-[...framesLight, ...framesDark].forEach((src) => {
-    const img = new Image();
-    img.src = src;
-});
-
-let isPlaying = false;
-let currentFrameIndex = 0;
-let animationTimer = null;
-const FRAME_SPEED = 160;
-
-function getActiveFrames() {
-    return document.body.classList.contains('dark-mode') ? framesDark : framesLight;
-}
-
-function updateMusicImage() {
-    if (!musicImg) return;
-    const frames = getActiveFrames();
-    musicImg.src = frames[currentFrameIndex % frames.length];
-}
-
-function startFrameLoop() {
-    if (animationTimer) clearInterval(animationTimer);
-    animationTimer = setInterval(() => {
-        const frames = getActiveFrames();
-        currentFrameIndex = (currentFrameIndex + 1) % frames.length;
-        if (musicImg) musicImg.src = frames[currentFrameIndex];
-    }, FRAME_SPEED);
-}
-
-function stopFrameLoop() {
-    if (animationTimer) {
-        clearInterval(animationTimer);
-        animationTimer = null;
+    if (bgMusic) {
+        bgMusic.volume = MUSIC_VOLUME;
     }
-    currentFrameIndex = 0;
-    updateMusicImage();
-}
 
-// phát bài ngẫu nhiên 
-function playNewRandomSong() {
-    bgMusic.src = pickRandomTrack();
-    bgMusic.play().then(() => {
-        startFrameLoop();
-        isPlaying = true;
-    }).catch((err) => {
-        console.warn("what", err);
+    let currentTrackIndex = -1;
+
+    // Hàm lấy bài ngẫu nhiên
+    function pickRandomTrack() {
+        if (playlist.length <= 1) return playlist[0];
+
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * playlist.length);
+        } while (randomIndex === currentTrackIndex);
+
+        currentTrackIndex = randomIndex;
+        return playlist[currentTrackIndex];
+    }
+
+    // Danh sách frame mascot
+    const framesLight = [
+        'image/icoc.png',
+        'image/icoc.png',
+        'image/icoc.png'
+    ];
+
+    const framesDark = [
+        'image/icoc.png',
+        'image/icoc.png',
+        'image/icoc.png'
+    ];
+
+    // Preload ảnh
+    [...framesLight, ...framesDark].forEach((src) => {
+        const img = new Image();
+        img.src = src;
     });
-}
 
-// click mascot
-if (musicBtn && bgMusic) {
-    musicBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            stopFrameLoop();
-            isPlaying = false;
-        } else {
+    let isPlaying = false;
+    let currentFrameIndex = 0;
+    let animationTimer = null;
+    const FRAME_SPEED = 160;
 
-            if (!bgMusic.src || bgMusic.ended) {
-                playNewRandomSong();
-            } else {
+    function getActiveFrames() {
+        return document.body.classList.contains('dark-mode') ? framesDark : framesLight;
+    }
 
-                bgMusic.play().then(() => {
-                    startFrameLoop();
-                    isPlaying = true;
-                }).catch(() => playNewRandomSong());
-            }
+    function updateMusicImage() {
+        if (!musicImg) return;
+        const frames = getActiveFrames();
+        musicImg.src = frames[currentFrameIndex % frames.length];
+    }
+
+    function startFrameLoop() {
+        if (animationTimer) clearInterval(animationTimer);
+        animationTimer = setInterval(() => {
+            const frames = getActiveFrames();
+            currentFrameIndex = (currentFrameIndex + 1) % frames.length;
+            if (musicImg) musicImg.src = frames[currentFrameIndex];
+        }, FRAME_SPEED);
+    }
+
+    function stopFrameLoop() {
+        if (animationTimer) {
+            clearInterval(animationTimer);
+            animationTimer = null;
         }
-    });
-
-    // CHUYỂN BÀI NGẪU NHIÊN KHI HẾT BÀI
-    bgMusic.addEventListener('ended', () => {
-        if (isPlaying) {
-            playNewRandomSong();
-        }
-    });
-}
-
-// Khôi phục Night Mode 
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-    if (nightIcon) nightIcon.classList.replace('fa-moon', 'fa-sun');
-    updateMusicImage();
-}
-
-// Sự kiện đổi chế độ Sáng/Tối
-if (nightBtn && nightIcon) {
-    nightBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-
-        const isDark = document.body.classList.contains('dark-mode');
-        nightIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
+        currentFrameIndex = 0;
         updateMusicImage();
-    });
-}
+    }
+
+    // Hàm phát bài ngẫu nhiên (Luôn khóa chặt volume tại đây)
+    function playNewRandomSong() {
+        if (!bgMusic) return;
+
+        bgMusic.src = pickRandomTrack();
+        bgMusic.volume = MUSIC_VOLUME; // Ép âm lượng cho bài hát mới nạp
+
+        bgMusic.play().then(() => {
+            startFrameLoop();
+            isPlaying = true;
+        }).catch((err) => {
+            console.warn("Chính sách trình duyệt chặn tự phát âm thanh:", err);
+        });
+    }
+
+    // Sự kiện Click vào Mascot
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                stopFrameLoop();
+                isPlaying = false;
+            } else {
+                // Đảm bảo âm lượng luôn được đặt lại trước khi play
+                bgMusic.volume = MUSIC_VOLUME;
+
+                if (!bgMusic.src || bgMusic.ended) {
+                    playNewRandomSong();
+                } else {
+                    bgMusic.play().then(() => {
+                        startFrameLoop();
+                        isPlaying = true;
+                    }).catch(() => playNewRandomSong());
+                }
+            }
+        });
+
+        // Tự động chuyển bài ngẫu nhiên khi hết bài
+        bgMusic.addEventListener('ended', () => {
+            if (isPlaying) {
+                playNewRandomSong();
+            }
+        });
+    }
+
+    // Khôi phục Night Mode từ LocalStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (nightIcon) nightIcon.classList.replace('fa-moon', 'fa-sun');
+        updateMusicImage();
+    }
+
+    // Sự kiện đổi chế độ Sáng/Tối
+    if (nightBtn && nightIcon) {
+        nightBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            const isDark = document.body.classList.contains('dark-mode');
+            nightIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+            updateMusicImage();
+        });
+    }
+});
 
 
 
