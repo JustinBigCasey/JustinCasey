@@ -1,5 +1,90 @@
-// ================= HÀM DÙNG CHUNG =================
+// ================= HỆ THỐNG ÂM THANH =================
 
+const openPaperSfx = new Audio('audio/pageturn.mp3');
+const closePaperSfx = new Audio('audio/pageturnof.mp3');
+
+const clickSounds = [
+    new Audio('audio/click1.mp3'),
+    new Audio('audio/click2.mp3'),
+    new Audio('audio/click3.mp3')
+];
+
+// Chỉnh âm lượng
+clickSounds.forEach(sound => sound.volume = 0.4);
+openPaperSfx.volume = 0.5;
+closePaperSfx.volume = 0.5;
+
+// Hàm phát tiếng click ngẫu nhiên
+function playRandomClickSound() {
+    const randomIndex = Math.floor(Math.random() * clickSounds.length);
+    const sound = clickSounds[randomIndex];
+    sound.currentTime = 0;
+    sound.play().catch(() => { });
+}
+
+// Hàm phát tiếng mở / đóng giấy
+function playOpenPaperSound() {
+    openPaperSfx.currentTime = 0;
+    openPaperSfx.play().catch(() => { });
+}
+
+function playClosePaperSound() {
+    closePaperSfx.currentTime = 0;
+    closePaperSfx.play().catch(() => { });
+}
+
+// Gán âm thanh cho các nút 
+document.addEventListener('DOMContentLoaded', () => {
+    const allButtons = document.querySelectorAll(`
+        button:not(.faq-question),
+        .bar-close,
+        .window-close,
+        .contact-btn
+    `);
+
+    allButtons.forEach(btn => {
+        btn.addEventListener('click', playRandomClickSound);
+    });
+});
+
+// work
+const hoverSounds = [
+    new Audio('audio/hover1.mp3'),
+    new Audio('audio/hover2.mp3'),
+    new Audio('audio/hover3.mp3'),
+    new Audio('audio/hover4.mp3'),
+    new Audio('audio/hover5.mp3'),
+    new Audio('audio/hover6.mp3'),
+];
+
+// Chỉnh âm lượng dịu nhẹ khi lướt chuột
+hoverSounds.forEach(sound => sound.volume = 0.25);
+
+
+function playCyclingHoverSound() {
+    const randomIndex = Math.floor(Math.random() * hoverSounds.length);
+    const sound = hoverSounds[randomIndex];
+    sound.currentTime = 0;
+    sound.play().catch(() => { });
+}
+
+
+
+// Gán sự kiện rê chuột (mouseenter) cho tất cả các thẻ skill
+document.addEventListener('DOMContentLoaded', () => {
+    const skillTags = document.querySelectorAll('.skill-tag');
+
+    skillTags.forEach(tag => {
+        tag.addEventListener('mouseenter', playCyclingHoverSound);
+    });
+});
+
+
+
+
+
+
+// ================= HÀM DÙNG CHUNG =================
 let highestZIndex = 1000;
 
 function setupDraggableWindow(winId, openBtnId, closeBtnId) {
@@ -267,17 +352,17 @@ document.addEventListener('click', (e) => {
     if (!questionBtn) return;
 
     const currentItem = questionBtn.closest('.faq-item');
-    const isOpen = currentItem.classList.contains('is-active');
+    const isCurrentlyOpen = currentItem.classList.contains('is-active');
 
-    // Đóng các câu hỏi khác đang mở
-    document.querySelectorAll('.faq-item.is-active').forEach((item) => {
-        if (item !== currentItem) {
-            item.classList.remove('is-active');
-        }
-    });
 
-    // Bật/tắt class is-active cho câu hiện tại
-    currentItem.classList.toggle('is-active', !isOpen);
+    // Bật/tắt
+    if (!isCurrentlyOpen) {
+        currentItem.classList.add('is-active');
+        playOpenPaperSound();
+    } else {
+        currentItem.classList.remove('is-active');
+        playClosePaperSound();
+    }
 });
 
 
@@ -541,7 +626,7 @@ function escapeHtml(str) {
 
 // ================= POPUP =================
 const hintsList = [
-    "reminder, you can drag the windows around by the title bar! ^.^", ,
+    "you can drag the windows around by the title bar! ^.^", ,
     "click on me to toggle the background music ~ (๑ᵕᴗᵕ๑)",
     "feel free to drop a message in the ask box in contact! (｡•̀ᴗ-)✧",
     "try the night mode on the top-left corner if you feel kinda eepy! (˘ω˘)",
@@ -549,8 +634,7 @@ const hintsList = [
     "click on the images in the gallery to see them in full size! OwO",
     "you can also use the ESC key to close windows or popups too! :3",
     "i've been bouncing up and down here for 10 minutes and i'm getting dizzy @_@",
-    "why are you just staring? click something! ( ˶ˆ꒳ˆ˵ )",
-
+    "why are you just staring? click something! ( ˶ˆ꒳ˆ˵ )"
 ];
 
 let hintIndex = 0;
@@ -575,14 +659,16 @@ function triggerMusicHint() {
 // Bắt đầu hiện lần đầu sau 3 giây khi vào web
 setTimeout(() => {
     triggerMusicHint();
-    // Lặp lại mỗi 10 giây
-    setInterval(triggerMusicHint, 10000);
+    // Lặp lại mỗi 12 giây
+    setInterval(triggerMusicHint, 12000);
 }, 3000);
 
 // Bấm vào bong bóng để tắt nhanh
 bubbleEl?.addEventListener('click', () => {
     bubbleEl.classList.remove('show');
 });
+
+
 
 
 
@@ -595,7 +681,32 @@ const bgMusic = document.getElementById('bgMusic');
 const nightBtn = document.getElementById('nightToggle');
 const nightIcon = nightBtn ? nightBtn.querySelector('i') : null;
 
-// Danh sách các frame ảnh (chú ý đường dẫn trùng khớp chữ hoa/thường trên GitHub)
+// 1. DANH SÁCH BÀI HÁT 
+const playlist = [
+    'audio/Laufey1.mp3',
+    'audio/Laufey2.mp3',
+    'audio/Laufey3.mp3',
+    'audio/Laufey4.mp3'
+];
+
+playlist.volume = 0.3;
+
+let currentTrackIndex = -1;
+
+// Hàm lấy ngẫu nhiên
+function pickRandomTrack() {
+    if (playlist.length <= 1) return playlist[0];
+
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * playlist.length);
+    } while (randomIndex === currentTrackIndex);
+
+    currentTrackIndex = randomIndex;
+    return playlist[currentTrackIndex];
+}
+
+// Danh sách frame 
 const framesLight = [
     'image/icoc.png',
     'image/icoc.png',
@@ -647,7 +758,18 @@ function stopFrameLoop() {
     updateMusicImage();
 }
 
-// Bật/tắt nhạc
+// phát bài ngẫu nhiên 
+function playNewRandomSong() {
+    bgMusic.src = pickRandomTrack();
+    bgMusic.play().then(() => {
+        startFrameLoop();
+        isPlaying = true;
+    }).catch((err) => {
+        console.warn("what", err);
+    });
+}
+
+// click mascot
 if (musicBtn && bgMusic) {
     musicBtn.addEventListener('click', () => {
         if (isPlaying) {
@@ -655,17 +777,28 @@ if (musicBtn && bgMusic) {
             stopFrameLoop();
             isPlaying = false;
         } else {
-            bgMusic.play().then(() => {
-                startFrameLoop();
-                isPlaying = true;
-            }).catch((err) => {
-                console.warn("Chính sách trình duyệt chặn tự phát âm thanh:", err);
-            });
+
+            if (!bgMusic.src || bgMusic.ended) {
+                playNewRandomSong();
+            } else {
+
+                bgMusic.play().then(() => {
+                    startFrameLoop();
+                    isPlaying = true;
+                }).catch(() => playNewRandomSong());
+            }
+        }
+    });
+
+    // CHUYỂN BÀI NGẪU NHIÊN KHI HẾT BÀI
+    bgMusic.addEventListener('ended', () => {
+        if (isPlaying) {
+            playNewRandomSong();
         }
     });
 }
 
-// Khôi phục Night Mode từ LocalStorage
+// Khôi phục Night Mode 
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     if (nightIcon) nightIcon.classList.replace('fa-moon', 'fa-sun');

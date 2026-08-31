@@ -30,7 +30,7 @@
 
         <!-- Night mode toggle -->
         <div class="nightMode">
-            <button class="Night" id="nightToggle" title="Switch to dark mode">
+            <button class="Night" id="nightToggle">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
@@ -38,15 +38,15 @@
 
         <!-- Music player -->
         <div class="musicPlay">
-            <!-- Bong bóng thoại gợi ý (có sẵn chữ) -->
+
             <div class="music-bubble" id="musicBubble">
                 💡 reminder: you can drag the windows around by the title bar!
             </div>
 
-            <button class="music" id="musicToggle" title="Phát nhạc">
+            <button class="music" id="musicToggle">
                 <img src="image/icoc.png" alt="Music" class="btn-music" id="musicImg">
             </button>
-            <audio id="bgMusic" src="audio/Nihahaha.mp3" loop preload="auto"></audio>
+            <audio id="bgMusic" preload="auto"></audio>
         </div>
 
 
@@ -63,31 +63,31 @@
 
                     <div class="exploreBtn">
                         <!-- Nút 1: About -->
-                        <button class="butifuBtn" id="openAboutBtn" title="About Me">
+                        <button class="butifuBtn" id="openAboutBtn">
                             <img src="image/icoc.png" alt="About" class="btn-img">
                             <span class="btn-text">about</span>
                         </button>
 
                         <!-- Nút 2: Work -->
-                        <button class="butifuBtn" id="openWorkBtn" title="Works">
+                        <button class="butifuBtn" id="openWorkBtn">
                             <img src="image/icoc.png" alt="Work" class="btn-img">
                             <span class="btn-text">work</span>
                         </button>
 
                         <!-- Nút 3: Links -->
-                        <button class="butifuBtn" id="openLinksBtn" title="Links">
+                        <button class="butifuBtn" id="openLinksBtn">
                             <img src="image/icoc.png" alt="Links" class="btn-img">
                             <span class="btn-text">links</span>
                         </button>
 
                         <!-- Nút 4: Faq -->
-                        <button class="butifuBtn" id="openFaqBtn" title="FAQ">
+                        <button class="butifuBtn" id="openFaqBtn">
                             <img src="image/icoc.png" alt="Faq" class="btn-img">
                             <span class="btn-text">Faq</span>
                         </button>
 
                         <!-- Nút 5: Contact -->
-                        <button class="butifuBtn" id="openContactBtn" title="Contact">
+                        <button class="butifuBtn" id="openContactBtn">
                             <img src="image/icoc.png" alt="Contact" class="btn-img">
                             <span class="btn-text">Contact</span>
                         </button>
@@ -508,59 +508,55 @@
                                 <li><b>game engine:</b> <a href="https://unity.com/" target="_blank"
                                         class="faq-link">Unity 2D/3D</a></li>
                                 <li><b>illustration:</b> Krita, Paint</li>
-                                <li>feel free to check the rest of the tools i use in the <b>Works</b> window!</li>
+                                <li>feel free to check the rest of the tools i use in the works window!</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Q2: Commissions -->
+                <!-- Q2: Inspiration-->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-q-text">are your commissions open?</span>
+                        <span class="faq-q-text">why did you make this website?</span>
                         <i class="fa-solid fa-chevron-down faq-icon"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li><b>commissions:</b> currently closed to focus on university courses.</li>
-                                <li><b>game jams &amp; collabs:</b> always happy to join fun indie projects or
-                                    open-source ideas!</li>
+                                <li> i made this website to showcase some of my creative work and provide a central hub
+                                    for my projects. </li>
+                                <li>heavily inspired by <b>sharyap</b> to build this! 😸 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Q3: Setup -->
+                <!-- Q3: name -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-q-text">what's your setup?</span>
+                        <span class="faq-q-text">why your name is justin?</span>
                         <i class="fa-solid fa-chevron-down faq-icon"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li><b>OS:</b> Windows 11 Pro</li>
-                                <li><b>code editor theme:</b> One Dark Pro / Catppuccin Mocha</li>
-                                <li><b>font:</b> JetBrains Mono &amp; Fira Code</li>
+                                <li>i think it's a cool name, that's all! </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Q4: Sound Effects -->
+                <!-- Q4: play games-->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-q-text">where do you get your sound effects?</span>
+                        <span class="faq-q-text">what game do you play and can we play together?</span>
                         <i class="fa-solid fa-chevron-down faq-icon"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li><a href="https://freesound.org/" target="_blank" class="faq-link">freesound.org</a>
-                                    for ambient and background noise</li>
-                                <li>itch.io sound packs &amp; bfxr for 8-bit retro audio</li>
-                                <li>custom audio edited with <b>Audacity</b></li>
+                                <li>i often play League of Legends and other MOBAs, gacha games</li>
+                                <li>feel free to reach out to me on discord so we can play together! 🎮</li>
                             </ul>
                         </div>
                     </div>
@@ -575,42 +571,76 @@
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li><b>yes:</b> personal, non-commercial use is completely okay as long as you give
-                                    proper credit!</li>
-                                <li><b>no:</b> strictly no reposting for sale or feeding into AI datasets.</li>
+                                <li>sure thing, but <b>please give proper credit!</b></li>
+                                <li>and if you can, ask for my permission via dm/email is always appreciated!</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Q6: Inspiration -->
+                <!-- Q7: why no replie -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-q-text">where do you get your inspiration from?</span>
+                        <span class="faq-q-text">why don't you reply to my messages i sent you 3 weeks ago?</span>
                         <i class="fa-solid fa-chevron-down faq-icon"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li><b>nature:</b> landscapes, plants, and animals</li>
-                                <li><b>art &amp; design:</b> digital art, vintage posters, and architecture</li>
-                                <li><b>pop culture:</b> movies, games, and anime</li>
+                                <li> <b>i'm really sorry for not replying sooner! :(</b></li>
+                                <li> i really appreciate all of your messages! thank u so much for reaching out! 🙏🌷
+                                </li>
+                                <li> i don't usually check my social media messages, so please direct questions to my
+                                    email for urgent matters, work, and other invitations instead! tank youu!! 🤤💓</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Q7: Why my name is justin -->
+                <!-- Q6: what is your favourite food -->
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-q-text">why is your name justin?</span>
+                        <span class="faq-q-text">what is your favourite food?</span>
                         <i class="fa-solid fa-chevron-down faq-icon"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             <ul class="faq-bullets">
-                                <li>it's a nickname i got from my friends in high school, and it stuck!</li>
-                                <li>my real name is Huynh Thien An, but i prefer to go by Justin Casey online.</li>
+                                <li> egg 🍳 and sushi 🍣!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6: what is the background music -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">what is the background music?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li> they're all songs by <a href="https://www.youtube.com/@laufey" target="_blank"
+                                        class="faq-link">Laufey</a>! definitely go check her music out 🌷🎵
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Q8: who is the funny looking rabbit -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-q-text">who is the funny looking rabbit down there?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <ul class="faq-bullets">
+                                <li> her name is <b>ranta!!!</b> </li>
+                                <li> she's a cute rabbit who loves to play and explore! she is a bit silly! 😋</li>
                             </ul>
                         </div>
                     </div>
@@ -693,7 +723,7 @@
 
                     <div class="askbox-form-footer">
                         <span class="msg-status" id="sendMsgStatus"></span>
-                        <button class="retro-send-btn" id="sendMsgBtn">send message 🚀</button>
+                        <button class="retro-send-btn" id="sendMsgBtn">send messages</button>
                     </div>
                 </div>
 
