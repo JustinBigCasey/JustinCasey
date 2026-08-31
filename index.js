@@ -686,9 +686,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const petClickSounds = [
         new Audio('audio/Nihahaha.mp3'),
         new Audio('audio/Koyuki_Battle_Damage_1.wav'),
+        new Audio('audio/Koyuki_Battle_Damage_2.wav'),
+        new Audio('audio/Koyuki_Battle_Damage_3.wav'),
         new Audio('audio/Koyuki_Formation_In_1.wav'),
         new Audio('audio/Koyukihungi.wav'),
         new Audio('audio/Koyukibluacaibu.wav'),
+        new Audio('audio/Koyuki_Battle_TacticalAction_1.wav')
 
     ];
 

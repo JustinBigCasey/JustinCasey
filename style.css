@@ -84,21 +84,23 @@ main {
 
 
 
-
 /* ================= EASTER EGG ================= */
 .home-pet-wrapper {
     position: fixed;
     top: 80px;
-    left: 360px;
+    left: clamp(20px, 24vw, 360px);
     z-index: 998;
     cursor: pointer;
     user-select: none;
-}
-
-
-.pet-avatar {
     width: 62px;
     height: 62px;
+}
+
+.pet-avatar {
+    width: 62px !important;
+    height: 62px !important;
+    max-width: 62px !important;
+    max-height: 62px !important;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
@@ -119,7 +121,6 @@ main {
     }
 }
 
-
 .home-pet-wrapper:hover .pet-avatar {
     animation: petExcitedBounce 0.45s ease infinite alternate;
 }
@@ -134,7 +135,7 @@ main {
     }
 }
 
-/* poopup */
+/* popup */
 .pet-bubble {
     position: absolute;
     bottom: calc(100% + 8px);
@@ -155,7 +156,6 @@ main {
     transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-
 .pet-bubble::after {
     content: '';
     position: absolute;
@@ -169,13 +169,11 @@ main {
     transform: rotate(45deg);
 }
 
-
 .home-pet-wrapper:hover .pet-bubble,
 .home-pet-wrapper.is-talking .pet-bubble {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
-
 
 .pet-easter-egg {
     animation: petSpinCrazy 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite !important;
