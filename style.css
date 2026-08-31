@@ -85,22 +85,46 @@ main {
 
 
 /* ================= EASTER EGG ================= */
+.home-container {
+    position: relative;
+    /* Làm mốc tọa độ cố định cho mascot */
+    width: min(90vw, 850px);
+    /* Khớp chính xác chiều rộng với homeBox */
+    display: flex;
+    justify-content: center;
+}
+
+.homeBox {
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    width: 100%;
+    /* Chiếm 100% độ rộng của home-container */
+    height: min(65vh, 550px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 6px rgb(242, 204, 211);
+}
+
+
+/* ================= MASCOT ================= */
 .home-pet-wrapper {
-    position: fixed;
-    top: 80px;
-    left: clamp(20px, 24vw, 360px);
-    z-index: 998;
+    position: absolute;
+    bottom: calc(100% - -40px);
+    left: 20px;
+    z-index: 10;
     cursor: pointer;
     user-select: none;
     width: 62px;
     height: 62px;
 }
 
+
 .pet-avatar {
-    width: 62px !important;
-    height: 62px !important;
-    max-width: 62px !important;
-    max-height: 62px !important;
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
@@ -135,7 +159,7 @@ main {
     }
 }
 
-/* popup */
+/* Popup bong bóng thoại */
 .pet-bubble {
     position: absolute;
     bottom: calc(100% + 8px);
@@ -175,6 +199,7 @@ main {
     transform: translateY(0) scale(1);
 }
 
+/* Hiệu ứng xoay vòng Easter Egg */
 .pet-easter-egg {
     animation: petSpinCrazy 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite !important;
 }
