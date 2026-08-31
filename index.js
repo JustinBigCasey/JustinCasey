@@ -634,7 +634,9 @@ const hintsList = [
     "click on the images in the gallery to see them in full size! OwO",
     "you can also use the ESC key to close windows or popups too! :3",
     "i've been bouncing up and down here for 10 minutes and i'm getting dizzy @_@",
-    "why are you just staring? click something! ( ˶ˆ꒳ˆ˵ )"
+    "why are you just staring? click something! ( ˶ˆ꒳ˆ˵ )",
+    "maybe you can find a little surprise if you click on that floating guy more! >:3",
+    "lets play some games together! (๑•̀ㅂ•́)و✧",
 ];
 
 let hintIndex = 0;
@@ -666,6 +668,144 @@ setTimeout(() => {
 // Bấm vào bong bóng để tắt nhanh
 bubbleEl?.addEventListener('click', () => {
     bubbleEl.classList.remove('show');
+});
+
+
+
+
+
+/// ================= EASTER EGG =================
+document.addEventListener('DOMContentLoaded', () => {
+    const homePet = document.getElementById('homePet');
+    const petBubble = document.getElementById('petBubble');
+    const petAvatar = document.getElementById('petAvatar');
+
+    if (!homePet || !petBubble || !petAvatar) return;
+
+    // 1. DANH SÁCH FILE ÂM THANH 
+    const petClickSounds = [
+        new Audio('audio/Nihahaha.mp3'),
+        new Audio('audio/Koyuki_Battle_Damage_1.wav'),
+        new Audio('audio/Koyuki_Formation_In_1.wav'),
+        new Audio('audio/Koyukihungi.wav'),
+        new Audio('audio/Koyukibluacaibu.wav'),
+
+    ];
+
+    // Âm thanh riêng
+    const easterEggSfx = new Audio('audio/koyukiuwwaaa.wav');
+
+    // Chỉnh âm lượng
+    petClickSounds.forEach(s => s.volume = 0.5);
+    easterEggSfx.volume = 0.7;
+
+    // Hàm phát âm thanh ngẫu nhiên
+    function playRandomPetSound() {
+
+        if (typeof isMuted !== 'undefined' && isMuted) return;
+
+        const randomIndex = Math.floor(Math.random() * petClickSounds.length);
+        const sound = petClickSounds[randomIndex];
+        sound.currentTime = 0;
+        sound.play().catch(() => { });
+    }
+
+    // 2. DANH SÁCH CÂU THOẠI
+    const petQuotes = [
+        "✨ heyy! you found me ( ˶ˆ꒳ˆ˵ )",
+        "my voice is so cute! (๑ᵕᴗᵕ๑)",
+        "don't forget to drink water! 🫗",
+        "why do you keep clicking me? ( > ᗣ < )",
+        "laufey on repeat 24/7 ✨",
+        "bala bele bala ( ᐛ )و",
+    ];
+
+    let petClickCount = 0;
+    let petResetTimer = null;
+    let isEasterEggActive = false;
+
+    // 3. SỰ KIỆN CLICK VÀO MASCOT
+    homePet.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isEasterEggActive) return;
+
+        // Phát âm thanh random ngay khi bấm
+        playRandomPetSound();
+
+        petClickCount++;
+        clearTimeout(petResetTimer);
+
+        // Đổi câu thoại ngẫu nhiên
+        const randomQuote = petQuotes[Math.floor(Math.random() * petQuotes.length)];
+        petBubble.innerHTML = randomQuote;
+        homePet.classList.add('is-talking');
+
+        // BẤM 10 EASTER EGG
+        if (petClickCount >= 10) {
+            triggerPetEasterEgg();
+        } else {
+            petResetTimer = setTimeout(() => {
+                homePet.classList.remove('is-talking');
+                petClickCount = 0;
+                petBubble.innerHTML = "✨ hi there! welcome to my cozy hub ( ˶ˆ꒳ˆ˵ )";
+            }, 3000);
+        }
+    });
+
+    // 4. KÍCH HOẠT EASTER EGG
+    function triggerPetEasterEgg() {
+        isEasterEggActive = true;
+        petAvatar.classList.add('pet-easter-egg');
+        petBubble.innerHTML = "🎉 UWAAAAAAAAAAAAH 💫✨";
+        homePet.classList.add('is-talking');
+
+        // Phát âm thanh Easter Egg
+        if (typeof isMuted === 'undefined' || !isMuted) {
+            easterEggSfx.currentTime = 0;
+            easterEggSfx.play().catch(() => { });
+        }
+
+        // Bắn pháo hoa
+        spawnConfettiBurst();
+
+        setTimeout(() => {
+            petAvatar.classList.remove('pet-easter-egg');
+            petBubble.innerHTML = "😵 i think i need a nap now... ( ᴗ͈ˬᴗ͈)ᶻᶻᶻ";
+
+            setTimeout(() => {
+                homePet.classList.remove('is-talking');
+                petClickCount = 0;
+                isEasterEggActive = false;
+                petBubble.innerHTML = "✨ hi there! welcome to my cozy hub ( ˶ˆ꒳ˆ˵ )";
+            }, 2500);
+        }, 3500);
+    }
+
+    // 5. HIỆU ỨNG PHÁO HOA
+    function spawnConfettiBurst() {
+        const symbols = ['⭐', '🌸', '✨', '💖', '🎵', '💫', '🧁'];
+        for (let i = 0; i < 30; i++) {
+            const drop = document.createElement('div');
+            drop.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            drop.style.position = 'fixed';
+            drop.style.left = (Math.random() * 80 + 10) + 'vw';
+            drop.style.bottom = '0px';
+            drop.style.fontSize = (Math.random() * 16 + 20) + 'px';
+            drop.style.zIndex = '99999';
+            drop.style.pointerEvents = 'none';
+            drop.style.transition = `bottom ${Math.random() * 1.5 + 1}s ease-out, transform 2s ease, opacity 2s ease`;
+
+            document.body.appendChild(drop);
+
+            setTimeout(() => {
+                drop.style.bottom = (Math.random() * 60 + 30) + 'vh';
+                drop.style.transform = `rotate(${Math.random() * 360}deg) scale(1.5)`;
+                drop.style.opacity = '0';
+            }, 30);
+
+            setTimeout(() => drop.remove(), 2500);
+        }
+    }
 });
 
 
@@ -816,4 +956,75 @@ if (nightBtn && nightIcon) {
 
         updateMusicImage();
     });
+}
+
+
+
+
+
+
+
+// ================= HỆ THỐNG MUTE TOÀN BỘ ÂM THANH =================
+let isMuted = localStorage.getItem('globalMuted') === 'true';
+
+const soundToggleBtn = document.getElementById('soundToggle');
+const soundIcon = document.getElementById('soundIcon');
+
+// icon loa
+function updateSoundIcon() {
+    if (!soundIcon) return;
+    if (isMuted) {
+        soundIcon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+    } else {
+        soundIcon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+    }
+}
+
+if (isMuted) {
+    updateSoundIcon();
+    if (bgMusic) bgMusic.muted = true;
+}
+
+// Bấm nút để Bật/Tắt Mute
+soundToggleBtn?.addEventListener('click', () => {
+    isMuted = !isMuted;
+    localStorage.setItem('globalMuted', isMuted);
+    updateSoundIcon();
+
+    // Tắt/Mở tiếng của nhạc nền
+    if (bgMusic) {
+        bgMusic.muted = isMuted;
+    }
+});
+
+
+
+// ================= CẬP NHẬT CÁC HÀM PHÁT ÂM THANH =================
+
+function playRandomClickSound() {
+    if (isMuted) return;
+    const randomIndex = Math.floor(Math.random() * clickSounds.length);
+    const sound = clickSounds[randomIndex];
+    sound.currentTime = 0;
+    sound.play().catch(() => { });
+}
+
+function playOpenPaperSound() {
+    if (isMuted) return;
+    openPaperSfx.currentTime = 0;
+    openPaperSfx.play().catch(() => { });
+}
+
+function playClosePaperSound() {
+    if (isMuted) return;
+    closePaperSfx.currentTime = 0;
+    closePaperSfx.play().catch(() => { });
+}
+
+function playCyclingHoverSound() {
+    if (isMuted) return;
+    const sound = hoverSounds[currentHoverIndex];
+    sound.currentTime = 0;
+    sound.play().catch(() => { });
+    currentHoverIndex = (currentHoverIndex + 1) % hoverSounds.length;
 }
