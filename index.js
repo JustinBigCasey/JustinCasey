@@ -14,7 +14,7 @@ clickSounds.forEach(sound => sound.volume = 0.4);
 openPaperSfx.volume = 0.5;
 closePaperSfx.volume = 0.5;
 
-// Hàm phát tiếng click ngẫu nhiên
+// phát tiếng click ngẫu nhiên
 function playRandomClickSound() {
     const randomIndex = Math.floor(Math.random() * clickSounds.length);
     const sound = clickSounds[randomIndex];
@@ -60,13 +60,13 @@ const hoverSounds = [
 // Chỉnh âm lượng
 hoverSounds.forEach(sound => sound.volume = 0.25);
 
-// THÊM DÒNG NÀY: Khai báo biến đếm để không bị lỗi ReferenceError
+//  Khai báo biến đếm để không bị lỗi ReferenceError
 let currentHoverIndex = 0;
 
 function playCyclingHoverSound() {
     if (typeof isMuted !== 'undefined' && isMuted) return;
 
-    // Lấy âm thanh theo thứ tự xoay vòng (1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 1...)
+    // Lấy âm thanh theo thứ tự xoay vòng 
     const sound = hoverSounds[currentHoverIndex];
     currentHoverIndex = (currentHoverIndex + 1) % hoverSounds.length;
 
@@ -720,10 +720,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const petQuotes = [
         "✨ heyy! you found me ( ˶ˆ꒳ˆ˵ )",
         "my voice is so cute! (๑ᵕᴗᵕ๑)",
-        "don't forget to drink water! 🫗",
+        "don't forget to drink water! 🥤",
         "why do you keep clicking me? ( > ᗣ < )",
-        "laufey on repeat 24/7 ✨",
-        "bala bele bala ( ᐛ )و",
+        "am bout to blow! 😩",
+        "wabala wibili! ( ᐛ )و",
+        "i like jellies!! 🩷"
     ];
 
     let petClickCount = 0;
@@ -753,50 +754,63 @@ document.addEventListener('DOMContentLoaded', () => {
             petResetTimer = setTimeout(() => {
                 homePet.classList.remove('is-talking');
                 petClickCount = 0;
-                petBubble.innerHTML = "✨ hi there! welcome to my cozy hub ( ˶ˆ꒳ˆ˵ )";
+                petBubble.innerHTML = "✨ hallo! welcome to my cozy hub ( ˶ˆ꒳ˆ˵ )";
             }, 3000);
         }
     });
 
+    const normalAvatarSrc = petAvatar.src;
+    const funnyAvatarSrc = 'image/kuyaoghkaeho.jpg';
+    const tiredAvatarSrc = 'image/kuyuka.png';
+
     // 4. KÍCH HOẠT EASTER EGG
     function triggerPetEasterEgg() {
         isEasterEggActive = true;
+
+        //  mắc cười
+        petAvatar.src = funnyAvatarSrc;
         petAvatar.classList.add('pet-easter-egg');
-        petBubble.innerHTML = "🎉 UWAAAAAAAAAAAAH 💫✨";
+        petBubble.innerHTML = "🎉 UWAAAAAAAAAAAAHHH 💫✨";
         homePet.classList.add('is-talking');
 
-        // Phát âm thanh Easter Egg
+        // âm thanh Easter Egg
         if (typeof isMuted === 'undefined' || !isMuted) {
             easterEggSfx.currentTime = 0;
             easterEggSfx.play().catch(() => { });
         }
 
-        // Bắn pháo hoa
+        // pháo hoa
         spawnConfettiBurst();
 
+        // 3.5 giây: buồn ngủ
         setTimeout(() => {
             petAvatar.classList.remove('pet-easter-egg');
-            petBubble.innerHTML = "😵 i think i need a nap now... ( ᴗ͈ˬᴗ͈)ᶻᶻᶻ";
 
+            petAvatar.src = tiredAvatarSrc;
+
+            petBubble.innerHTML = "i think i need a nap now... ( ᴗ͈ˬᴗ͈)ᶻᶻᶻ";
+
+            //  4 giây ảnh ban đầu
             setTimeout(() => {
                 homePet.classList.remove('is-talking');
+                petAvatar.src = normalAvatarSrc; // Trả về ảnh gốc
                 petClickCount = 0;
                 isEasterEggActive = false;
                 petBubble.innerHTML = "✨ hi there! welcome to my cozy hub ( ˶ˆ꒳ˆ˵ )";
-            }, 2500);
+            }, 4000);
         }, 3500);
     }
 
-    // 5. HIỆU ỨNG PHÁO HOA
+    // 5. PHÁO HOA
     function spawnConfettiBurst() {
-        const symbols = ['⭐', '🌸', '✨', '💖', '🎵', '💫', '🧁'];
-        for (let i = 0; i < 30; i++) {
+        const symbols = ['⭐', '🌸', '✨', '💖', '🎵', '💫', '🧁', '🍭', '🍓', '🫧'];
+        for (let i = 0; i < 69; i++) {
             const drop = document.createElement('div');
             drop.innerText = symbols[Math.floor(Math.random() * symbols.length)];
             drop.style.position = 'fixed';
             drop.style.left = (Math.random() * 80 + 10) + 'vw';
             drop.style.bottom = '0px';
-            drop.style.fontSize = (Math.random() * 16 + 20) + 'px';
+            drop.style.fontSize = (Math.random() * 33 + 20) + 'px';
             drop.style.zIndex = '99999';
             drop.style.pointerEvents = 'none';
             drop.style.transition = `bottom ${Math.random() * 1.5 + 1}s ease-out, transform 2s ease, opacity 2s ease`;

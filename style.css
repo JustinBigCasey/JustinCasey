@@ -94,7 +94,6 @@ main {
     z-index: 2;
 }
 
-/* Container bắt buộc phải có position: relative để làm mốc tọa độ */
 .home-container {
     position: relative;
     width: min(90vw, 850px);
@@ -113,10 +112,41 @@ main {
     box-shadow: 0px 6px rgb(242, 204, 211);
 }
 
-/* ================= 2. MASCOT TRÊN NÓC CỬA SỔ ================= */
+/* 1. Kích thước icon About */
+#openAboutBtn .btn-img {
+    width: 94px;
+    height: 94px;
+}
+
+/* 2. Kích thước icon Work */
+#openWorkBtn .btn-img {
+    width: 89px;
+    height: 89px;
+}
+
+/* 3. Kích thước icon Links */
+#openLinksBtn .btn-img {
+    width: 81px;
+    height: 81px;
+}
+
+/* 4. Kích thước icon FAQ */
+#openFaqBtn .btn-img {
+    width: 88px;
+    height: 88px;
+}
+
+/* 5. Kích thước icon Contact */
+#openContactBtn .btn-img {
+    width: 84px;
+    height: 84px;
+}
+
+
+/* ================= 2. MASCOT ================= */
 .home-pet-wrapper {
     position: absolute;
-    bottom: calc(100% - -40px);
+    bottom: calc(100% - -30px);
     left: 15px;
     z-index: 20;
     cursor: pointer;
@@ -126,10 +156,10 @@ main {
 }
 
 .pet-avatar {
-    width: 100px !important;
-    height: 100px !important;
-    max-width: 100px !important;
-    max-height: 100px !important;
+    width: 80px !important;
+    height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
     object-fit: contain;
     display: block;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
@@ -164,7 +194,7 @@ main {
     }
 }
 
-/* ================= 3. BONG BÓNG THOẠI ================= */
+/* ================= 3.BÓNG THOẠI ================= */
 .pet-bubble {
     position: absolute;
     bottom: 100%;
@@ -395,6 +425,7 @@ body.dark-mode .pet-bubble::after {
     color: rgb(67, 57, 67);
     user-select: none;
     transition: color 0.25s ease, text-shadow 0.25s ease;
+    margin-top: 5px;
 }
 
 .butifuBtn:hover {
@@ -2364,7 +2395,6 @@ footer {
 
 
 
-
 /* ================= DARK MODE ================= */
 body::before {
     content: '';
@@ -2429,7 +2459,7 @@ body.dark-mode .btn-text,
 body.dark-mode footer,
 body.dark-mode .mediu a,
 body.dark-mode .about-content {
-    color: #f1eef8ec;
+    color: #f8f7f9ec;
 }
 
 body.dark-mode .Night {
@@ -2497,6 +2527,54 @@ body.dark-mode .info-item-sub {
     color: #94a3b8;
 }
 
+
+/* 1. Icon About */
+body.dark-mode #openAboutBtn .btn-img {
+    content: url('image/icon/about-us2.png');
+    width: 90px;
+    height: 90px;
+}
+
+/* 2. Icon Work */
+body.dark-mode #openWorkBtn .btn-img {
+    content: url('image/icon/open-folder2.png');
+    width: 84px;
+    height: 84px;
+}
+
+/* 3. Icon Links */
+body.dark-mode #openLinksBtn .btn-img {
+    content: url('image/icon/link2.png');
+    width: 76px;
+    height: 76px;
+}
+
+/* 4. Icon FAQ */
+body.dark-mode #openFaqBtn .btn-img {
+    content: url('image/icon/blank-page2.png');
+    width: 83px;
+    height: 83px;
+}
+
+/* 5. Icon Contact */
+body.dark-mode #openContactBtn .btn-img {
+    content: url('image/icon/email2.png');
+    width: 82px;
+    height: 82px;
+}
+
+body.dark-mode .exploreBtn .btn-img {
+    filter: brightness(0) invert(1);
+}
+
+
+body.dark-mode .butifuBtn .btn-img {
+    filter: brightness(0) invert(1) drop-shadow(1.5px 0 0 #000000) drop-shadow(-1.5px 0 0 #000000) drop-shadow(0 1.5px 0 #000000) drop-shadow(0 -1.5px 0 #000000);
+}
+
+body.dark-mode .butifuBtn:hover .btn-img {
+    filter: brightness(0) invert(1) drop-shadow(1.5px 0 0 #000000) drop-shadow(-1.5px 0 0 #000000) drop-shadow(0 1.5px 0 #000000) drop-shadow(0 -1.5px 0 #000000) drop-shadow(0 8px 14px rgba(244, 114, 182, 0.75)) !important;
+}
 
 /* Dark Mode for About */
 
