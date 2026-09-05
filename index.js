@@ -638,8 +638,9 @@ const hintsList = [
     "you can also use the ESC key to close windows or popups too! :3",
     "i've been bouncing up and down here for 10 minutes and i'm getting dizzy @_@",
     "why are you just staring? click something! ( ˶ˆ꒳ˆ˵ )",
-    "maybe you can find a little surprise if you click on that floating guy more! >:3",
+    "maybe you can find a little surprise if you click that floating chud on there more! >:3",
     "lets play some games together! (๑•̀ㅂ•́)و✧",
+    "those cutie floating in da water are my friends! (๑>ᴗ<๑)"
 ];
 
 let hintIndex = 0;
