@@ -291,14 +291,14 @@ const lightboxImg = document.getElementById('lightboxImg');
 const lightboxCaption = document.getElementById('lightboxCaption');
 const lightboxClose = document.getElementById('lightboxClose');
 
-// Mở phóng to ảnh
+// phóng to ảnh
 function openLightbox(src, captionHtml) {
     if (!lightbox || !lightboxImg) return;
     lightboxImg.src = src;
     lightboxCaption.innerHTML = captionHtml || '';
 
     lightbox.style.display = 'flex';
-    // Đợi 1 chút để chạy animation mượt mà
+    // animation mượt mà
     setTimeout(() => {
         lightbox.classList.add('is-active');
     }, 10);
@@ -315,7 +315,7 @@ function closeLightbox() {
     }, 250);
 }
 
-// 1. Click vào bất kỳ ảnh nào trong thư viện tranh để mở
+// 1. Click vào ảnh để mở
 document.addEventListener('click', (e) => {
     const clickedImg = e.target.closest('.gallery-img');
     if (clickedImg) {
@@ -325,17 +325,17 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// 2. BẤM RA VÙNG TỐI BÊN NGOÀI ĐỂ ĐÓNG NGAY LẬP TỨC
+// 2. BẤM RA VÙNG TỐI 
 if (lightbox) {
     lightbox.addEventListener('click', (e) => {
-        // Nếu điểm click trúng nền đen (lightbox-modal) thì đóng
+        // điểm click đóng
         if (e.target === lightbox) {
             closeLightbox();
         }
     });
 }
 
-// 3. Bấm phím ESC để đóng Lightbox trước (không làm tắt cửa sổ Work)
+// 3. Bấm phím ESC để đóng Lightbox trước 
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === 'Esc') {
         if (lightbox && lightbox.classList.contains('is-active')) {
@@ -390,7 +390,7 @@ const ADMIN_PIN = "21102007";
 let db = null;
 let useCloud = false;
 
-// Khởi tạo Firebase nếu đã điền config
+// Khởi tạo Firebase
 if (typeof firebase !== 'undefined' && firebaseConfig.apiKey !== "YOUR_API_KEY") {
     firebase.initializeApp(firebaseConfig);
     db = firebase.firestore();
@@ -460,7 +460,7 @@ async function handleSendMessage() {
             console.error(e);
         }
     } else {
-        // Dự phòng LocalStorage để test chạy được ngay
+        // Dự phòng LocalStorage
         let localMsgs = JSON.parse(localStorage.getItem('my_askbox_msgs') || '[]');
         newMsg.id = 'msg_' + Date.now();
         localMsgs.unshift(newMsg);
@@ -480,7 +480,7 @@ async function handleSendMessage() {
 
 if (sendMsgBtn) sendMsgBtn.addEventListener('click', handleSendMessage);
 
-// ================= TẢI & HIỂN THỊ TIN NHẮN =================
+// ================= TẢI HIỂN THỊ =================
 let allMessages = [];
 let isAdmin = false;
 
@@ -495,7 +495,7 @@ async function loadMessages() {
     if (isAdmin) renderAdminInbox();
 }
 
-// Hiển thị các câu hỏi đã được bạn duyệt
+// Hiển thị câu hỏi đã duyệt
 function renderPublicFeed() {
     if (!publicQaList) return;
     const approved = allMessages.filter(m => m.status === 'approved');
@@ -648,27 +648,28 @@ const bubbleEl = document.getElementById('musicBubble');
 function triggerMusicHint() {
     if (!bubbleEl) return;
 
-    // Gán chữ trực tiếp vào khung
+    // Gán chữ vào khung
     bubbleEl.textContent = hintsList[hintIndex];
     hintIndex = (hintIndex + 1) % hintsList.length;
 
-    // Hiện pop-up
+    // pop-up
     bubbleEl.classList.add('show');
 
-    // Tự ẩn sau 7 giây
+    // ẩn sau 8 giây
     setTimeout(() => {
         bubbleEl.classList.remove('show');
-    }, 7000);
+    }, 8000);
 }
 
-// Bắt đầu hiện lần đầu sau 3 giây khi vào web
+// hiện lần đầu sau 3 giây
 setTimeout(() => {
     triggerMusicHint();
-    // Lặp lại mỗi 12 giây
-    setInterval(triggerMusicHint, 12000);
+
+    // Lặp lại mỗi 14 giây
+    setInterval(triggerMusicHint, 14000);
 }, 3000);
 
-// Bấm vào bong bóng để tắt nhanh
+// Bấm vào tắt
 bubbleEl?.addEventListener('click', () => {
     bubbleEl.classList.remove('show');
 });
@@ -685,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!homePet || !petBubble || !petAvatar) return;
 
-    // 1. DANH SÁCH FILE ÂM THANH 
+    // 1. DANH SÁCH
     const petClickSounds = [
         new Audio('audio/Nihahaha.mp3'),
         new Audio('audio/Koyuki_Battle_Damage_1.wav'),
@@ -698,10 +699,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ];
 
-    // Âm thanh riêng
+    // Âm riêng
     const easterEggSfx = new Audio('audio/koyukiuwwaaa.wav');
 
-    // Chỉnh âm lượng
+    // âm lượng
     petClickSounds.forEach(s => s.volume = 0.5);
     easterEggSfx.volume = 0.7;
 
@@ -724,7 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "why do you keep clicking me? ( > ᗣ < )",
         "am bout to blow! 😩",
         "wabala wibili! ( ᐛ )و",
-        "i like jellies!! 🩷"
+        "i like jellies!! 🩷",
+        "i can sing too! 🎵",
+        "i like to nap a lot... ( ᴗ͈ˬᴗ͈)ᶻᶻᶻ",
     ];
 
     let petClickCount = 0;
@@ -849,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'audio/Laufey4.mp3'
     ];
 
-    const MUSIC_VOLUME = 0.08;
+    const MUSIC_VOLUME = 0.13;
 
     if (bgMusic) {
         bgMusic.volume = MUSIC_VOLUME;
@@ -1015,7 +1018,7 @@ if (isMuted) {
     if (bgMusic) bgMusic.muted = true;
 }
 
-// Bấm nút để Bật/Tắt Mute
+// Bấm nút để Bật/Tắt 
 soundToggleBtn?.addEventListener('click', () => {
     isMuted = !isMuted;
     localStorage.setItem('globalMuted', isMuted);

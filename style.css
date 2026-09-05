@@ -377,7 +377,7 @@ body.dark-mode .pet-bubble::after {
     text-align: center;
     font-weight: lighter;
     margin: 0;
-    margin-top: -46px;
+    margin-top: -20px;
     user-select: none;
     color: rgb(61, 60, 60);
 }
@@ -656,7 +656,7 @@ footer {
 }
 
 .fa-brands.fa-x-twitter:hover {
-    color: #555;
+    color: #b4b3b3;
     transform: scale(0.88);
 }
 
@@ -2424,6 +2424,13 @@ body.dark-mode .homeBox {
     box-shadow: 0px 6px #4a284e;
 }
 
+
+/* easter egg */
+body.dark-mode .pet-avatar {
+    filter: sepia(0.65) hue-rotate(290deg) saturate(1) brightness(0.91);
+}
+
+
 body.dark-mode .aboutBox {
     background-color: #2b2636;
     box-shadow: 0px 6px #4a284e;
@@ -2969,12 +2976,12 @@ body.dark-mode .contact-content::-webkit-scrollbar-button:single-button:vertical
 
 .water-pattern-track {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     left: 0;
     width: 100%;
     display: flex;
     overflow: hidden;
-    opacity: 0.65;
+    opacity: 0.35;
     z-index: 3;
     white-space: nowrap;
 }
@@ -2982,11 +2989,12 @@ body.dark-mode .contact-content::-webkit-scrollbar-button:single-button:vertical
 .pattern-loop {
     display: flex;
     align-items: center;
-    gap: 65px;
-    padding-right: 65px;
+    gap: 200px;
+    padding-right: 25px;
+    padding-left: 25px;
     flex-shrink: 0;
     min-width: 100%;
-    animation: scrollRightToLeft 25s linear infinite;
+    animation: scrollRightToLeft 130s linear infinite;
     will-change: transform;
 }
 
@@ -3016,6 +3024,94 @@ body.dark-mode .contact-content::-webkit-scrollbar-button:single-button:vertical
     }
 }
 
+
+/* uppis */
+.pattern-loop img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.pattern-loop img:nth-child(5n + 1) {
+    animation: bobMid 3.1s ease-in-out infinite alternate;
+    animation-delay: -1.3s;
+}
+
+.pattern-loop img:nth-child(5n + 2) {
+    animation: bobShallow 4.4s ease-in-out infinite alternate;
+    animation-delay: -0.5s;
+}
+
+.pattern-loop img:nth-child(5n + 3) {
+    animation: bobDeep 2.2s ease-in-out infinite alternate;
+    animation-delay: -2.7s;
+}
+
+.pattern-loop img:nth-child(5n + 4) {
+    animation: bobTilt 3.6s ease-in-out infinite alternate;
+    animation-delay: -1.9s;
+}
+
+.pattern-loop img:nth-child(5n + 5) {
+    animation: bobFast 2.6s ease-in-out infinite alternate;
+    animation-delay: -3.2s;
+}
+
+
+/* --- BIÊN KHÁC--- */
+
+@keyframes bobMid {
+    0% {
+        transform: translateY(1px) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(-12px) rotate(7deg);
+    }
+}
+
+@keyframes bobShallow {
+    0% {
+        transform: translateY(4px) rotate(16deg);
+    }
+
+    100% {
+        transform: translateY(-21px) rotate(-19deg);
+    }
+}
+
+@keyframes bobDeep {
+    0% {
+        transform: translateY(3px) rotate(19deg);
+    }
+
+    100% {
+        transform: translateY(-16px) rotate(-11deg);
+    }
+}
+
+@keyframes bobTilt {
+    0% {
+        transform: translateY(1px) rotate(-11deg);
+    }
+
+    100% {
+        transform: translateY(-11px) rotate(11deg);
+    }
+}
+
+@keyframes bobFast {
+    0% {
+        transform: translateY(2px) rotate(14deg);
+    }
+
+    100% {
+        transform: translateY(-17px) rotate(-16deg);
+    }
+}
+
 .waves-wrapper {
     position: absolute;
     bottom: 0;
@@ -3029,7 +3125,7 @@ body.dark-mode .contact-content::-webkit-scrollbar-button:single-button:vertical
 
 .waves {
     width: 100%;
-    height: 40px;
+    height: 43px;
     flex-shrink: 0;
     margin-bottom: -2px;
 }
